@@ -10,3 +10,12 @@ Comming from Barcelona, Catalunya, Spain:
 - Pau Gibert Moreno
 - Angel Prat Vilà
 - Jorge Borrás i Duarte
+
+## Building
+
+Execute the command
+
+```c++
+g++ -o CitySim cli.cpp Node.cpp Road.cpp
+.\CitySim.exe
+```
