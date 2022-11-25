@@ -7,3 +7,4 @@ Simulate diferent city-based events
 Comming from Barcelona, Catalunya, Spain:
 
 - Joaquim Torra Garcia
+- Pau Gibert Moreno
