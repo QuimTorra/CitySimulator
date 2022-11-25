@@ -8,3 +8,4 @@ Comming from Barcelona, Catalunya, Spain:
 
 - Joaquim Torra Garcia
 - Pau Gibert Moreno
+- Angel Prat Vilà
