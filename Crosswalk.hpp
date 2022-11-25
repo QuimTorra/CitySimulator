@@ -4,12 +4,14 @@
 #include <string>
 
 #include "Node.hpp"
+#include "Semafor.hpp"
 
 class Crosswalk : public Node
 {
     int t_cotxes;
     int t_vianants;
-    //  std::semafor sem;
+    //std::string name;
+    Semafor sem;
 public:
     Crosswalk();
 
@@ -21,9 +23,14 @@ public:
 
     Crosswalk(std::string name, int t_cotxes, int t_vianants);
 
+    Crosswalk(std::string name, Semafor sem);
+
     int get_t_cotxes();
 
     int get_t_vianants();
+
+    std::string get_name();
+
 };
 
 #endif
