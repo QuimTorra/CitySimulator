@@ -6,7 +6,8 @@
 class Road
 {
     std::string name;
-    int length;
+    pair<int, int> posStart;
+    pair<int, int> posEnd;
     int max_speed;
 
 public:
