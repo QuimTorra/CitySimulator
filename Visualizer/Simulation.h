@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -15,9 +16,13 @@ private:
     sf::VideoMode videoMode;
     sf::Event ev;
 
+    //
+    sf::RectangleShape car;
+
     //func
     void initVariables();
     void initWindow();
+    void initObjects();
     
 public:
         Simulation();
