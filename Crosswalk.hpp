@@ -24,7 +24,7 @@ public:
 
     int get_t_vianants();
 
-    std::string get_name();
+    //std::string get_name();
 };
 
 #endif

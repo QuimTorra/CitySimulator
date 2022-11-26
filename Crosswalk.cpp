@@ -7,7 +7,7 @@ Crosswalk::Crosswalk()
 }
 
 Crosswalk::Crosswalk(std::string name, int t_cotxes, int t_vianants)
-    : Node(name)
+    : Node(name, sem.getPos().first, sem.getPos().second)
 {
     this->t_cotxes = t_cotxes;
     this->t_vianants = t_vianants;
@@ -15,7 +15,7 @@ Crosswalk::Crosswalk(std::string name, int t_cotxes, int t_vianants)
 }
 
 Crosswalk::Crosswalk(std::string name, Semafor sem)
-    : Node(name)
+    : Node(name, sem.getPos().first, sem.getPos().second)
 {
     this->t_cotxes = sem.get_t_cotxes();
     this->t_vianants = sem.get_t_vianants();
