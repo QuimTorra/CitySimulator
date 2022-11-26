@@ -3,6 +3,8 @@
 
 #include "Node.hpp"
 #include "Road.hpp"
+#include "Crosswalk.hpp"
+#include "Semafor.hpp"
 #include <utility>
 #include <vector>
 

@@ -6,8 +6,8 @@ Crosswalk::Crosswalk()
     this->t_vianants = 25;
 }
 
-Crosswalk::Crosswalk(std::string name, int t_cotxes, int t_vianants)
-    : Node(name, sem.getPos().first, sem.getPos().second)
+Crosswalk::Crosswalk(std::string name, int t_cotxes, int t_vianants, int x, int y)
+    : Node(name, x, y)
 {
     this->t_cotxes = t_cotxes;
     this->t_vianants = t_vianants;
@@ -25,7 +25,7 @@ int Crosswalk::get_t_cotxes()
 {
     return this->t_cotxes;
 }
-
+ 
 int Crosswalk::get_t_vianants()
 {
     return this->t_vianants;
