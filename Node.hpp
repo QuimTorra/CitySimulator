@@ -12,7 +12,7 @@ class Node
     std::string name;
     std::pair<int, int> pos;
     std::vector<Node *> connections;
-    std::map<std::string, Road> roads;
+    std::map<std::string, Road> *roads = new std::map<std::string, Road>();
 
 public:
     Node();
@@ -29,7 +29,7 @@ public:
     std::vector<Node *> get_connections();
     std::map<std::string, Road> get_roads();
 
-    void add_connection(Node *n, Road r);
+    void add_connection(Node &n, Road r);
     // bool remove_connection(Node n);
 };
 
