@@ -1,13 +1,13 @@
 #ifndef CL_AGENT
 #define CL_AGENT
 
-#include "City.hpp"
+#include "Node.hpp"
+#include "Road.hpp"
 
 class Agent
 {
     int state; // 0 in node, 1 traversing
 
-    City *city;
     Node current_pos;
     Node destiny;
 
