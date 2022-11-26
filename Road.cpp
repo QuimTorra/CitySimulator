@@ -21,7 +21,6 @@ std::string Road::get_name()
 
 float Road::get_length()
 {
-    return 1;
     int x1 = this->posStart.first;
     int y1 = this->posStart.second;
     int x2 = this->posEnd.first;
