@@ -1,28 +1,81 @@
 #include "Button.hpp"
 
-//https://www.youtube.com/watch?v=xtBNgDncRnU
+//https://www.youtube.com/watch?v=xtBNgDncRnU  min 9
 //https://www.youtube.com/watch?v=HjkWqCa7Ktw
 
-Button::Button(const pair<Int,Int>& size, const pair<Int,Int>& pos) {
-    this->shape.setSize(size.first.f, size.second.f);
-    this->shape.setPosition(pos.first.f, pos.second.f);
-    this->shape.setOrigin(sf::Vector2f(size.first.f, size.second.f)/2.f);
+Button::Button(float x, float y, float width, float height, std::string text, sf::Color idle, sf::Color hover, sf::Color active) 
+: idle(idle),hover(hover),active(active)
+{
+    this->buttonState = BTN_IDLE;
+
+    this->shape.setPosition(sf::Vector2f(x,y));
+    this->shape.setSize(sf::Vector2f(width, height));
+    this->text.setString(text);
+    this->text.setFillColor(sf::Color(70,70,70,200));
+    this->text.setCharacterSize(12);
+    this->text.setPosition(
+        this->shape.getPosition().x / 2.f - this->text.getGlobalBounds().width / 2.f,
+        this->shape.getPosition().y / 2.f - this->text.getGlobalBounds().height / 2.f
+    );
     this->shape.setFillColor(this->idle);
-    this->shape.setOutlineColor(sf::Color{50, 50, 50, 255});
-    this->shape.setOutlineThickness(2.f);
-    
 }
 
-Button::~Button();
+Button::~Button()
+{
 
-void Button::setText(const String& Text, const Integer& fontSize) {
-    this->text.setString(Text);
-    this->text.setCharacterSize(fontSize);
-    this->text.setOrigin(sf::Vector2f(this->text.getLocalBounds.x, this->text.getLocalBounds.y));
-    this->text.setPosition(this->shape.getPosition);
+}
+//Acces
+const bool Button::isPressed() const
+{
+    if(this->buttonState == BTN_ACTIVE) {
+        return true;
+    }
+    return false;
+}
+//Function
+void Button::update(const sf::Vector2f mousePos)
+{
+    //idle
+    this->buttonState = BTN_IDLE;
+
+    //hover
+
+    if (this->shape.getGlobalBounds().contains(mousePos)) 
+    {
+        this->buttonState = BTN_HOVER;
+
+        //Pressed
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+        {
+            this->buttonState = BTN_ACTIVE;
+        }
+
+    }
+
+    switch (this->buttonState)
+    {
+    case BTN_IDLE:
+        this->shape.setFillColor(this->idle);
+        break;
+    case BTN_HOVER:
+        this->shape.setFillColor(this->hover);
+
+        break;
+    case BTN_ACTIVE:
+        this->shape.setFillColor(this->active);
+
+        break;
+    default:
+        this->shape.setFillColor(sf::Color::Red);
+        break;
+    }
+
 }
 
-void Button::draw(sf::RenderWindow window) {
-    window.draw(shape);
-    window.draw(text);
+void Button::render(sf::RenderTarget * target) 
+{
+    target->draw(this->shape);
 }
+
+
+

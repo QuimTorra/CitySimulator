@@ -46,7 +46,7 @@ void City::add_node(Node n)
 
 void City::add_road(std::string name, Node &origin, Node &end, int max_speed)
 {
-    Road r = Road(name, max_speed);
+    Road r = Road(name, max_speed, origin.get_pos(), end.get_pos());
     origin.add_connection(end, r);
     this->roads.push_back(r);
     this->rendering_info.push_back(r.get_info());

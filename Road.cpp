@@ -1,14 +1,17 @@
 #include "Road.hpp"
+#include <iostream>
 
 Road::Road()
 {
     this->name = "undefined";
 }
 
-Road::Road(std::string name, int max_speed)
+Road::Road(std::string name, int max_speed, std::pair<int, int> origin, std::pair<int, int> end)
 {
     this->name = name;
     this->max_speed = max_speed;
+    this->posStart = origin;
+    this->posEnd = end;
 }
 
 std::string Road::get_name()
@@ -25,6 +28,7 @@ float Road::get_length()
     int y2 = this->posEnd.second;
     float m1 = (x2 - x1);
     float m2 = (y2 - y1);
+
     float length(sqrt(m1 * m1 + m2 * m2));
 
     if (length < 0)
@@ -55,7 +59,7 @@ std::pair<int, int> Road::get_mid_point()
 float Road::get_angle()
 {
     float angle = atan2(posStart.second - posEnd.second, posStart.first - posEnd.first);
-    return angle;
+    return 90.f + angle * (180.f * M_1_PI);
 }
 
 // struc
