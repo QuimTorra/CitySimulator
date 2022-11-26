@@ -10,11 +10,11 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
     {
         // attrb
         sf::RectangleShape R;
-        R.setSize(sf::Vector2(20.f, r.lenght));
+        R.setSize(sf::Vector2(20.f, r.length));
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos
-        R.setOrigin(sf::Vector2f(10.f, r.lenght / 2.f));
+        R.setOrigin(sf::Vector2f(10.f, r.length / 2.f));
         R.setPosition(r.pos.first.f, r.pos.second.f);
         R.rotate(r.angle);
     }

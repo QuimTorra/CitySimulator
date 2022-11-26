@@ -8,7 +8,7 @@
 struct infoRoad
 {
     std::pair<int, int> pos;
-    float lenght;
+    float length;
     float angle;
 };
 
