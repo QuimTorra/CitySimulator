@@ -6,7 +6,7 @@ visualizerCity::~visualizerCity(){};
 
 void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 {
-
+    std::cout << "initCityAux, size of: " << Rs.size() << std::endl;
     // BUILD ROADS
     for (auto r : Rs)
     {
@@ -16,7 +16,7 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos
-        R.setOrigin(sf::Vector2f(10.f, r.lenght / 2.f));
+        R.setOrigin(sf::Vector2f(10.f, r.length / 2.f));
         R.setPosition(r.pos.first, r.pos.second);
         R.rotate(r.angle);
     }
@@ -38,6 +38,7 @@ void visualizerCity::draw(sf::RenderWindow *window)
     int size = this->Roads.size();
     for (int i = 0; i < size; ++i)
     {
+        std::cout << "printing: " << i << std::endl;
         window->draw(Roads[i]);
     }
 }

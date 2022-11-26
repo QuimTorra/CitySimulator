@@ -17,6 +17,7 @@ std::vector<Node> City::get_nodes()
 
 std::vector<infoRoad> City::get_roads()
 {
+    std::cout << "cityRoads, size of: " << roads.size() << std::endl;
     int size = roads.size();
     std::vector<infoRoad> result(size);
     for (int i = 0; i < size; ++i)
