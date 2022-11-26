@@ -1,31 +1,22 @@
 #include <iostream>
 
-#include "Road.hpp"
-#include "Node.hpp"
+#include "City.hpp"
 
 using namespace std;
 
 int main()
 {
-    Node n1 = Node("n1", 0, 0);
-    Node n2 = Node("n2", 0, 1);
-    Node n3 = Node("n3", 1, 0);
+    City prats = City("Prats de Lluçanès");
 
-    Road r12 = Road("r12", 1);
-    Road r23 = Road("r23", 1);
-    Road r31 = Road("r31", 1);
+    Node n1 = prats.add_node("n1", 0, 0);
+    Node n2 = prats.add_node("n2", 0, 1);
 
-    n1.add_connection(&n2, r12);
-    n2.add_connection(&n3, r23);
-    n3.add_connection(&n1, r31);
+    Node n3 = Node("n3", 1, 1);
+    prats.add_node(n3);
 
-    Node *currentNode = &n1;
+    prats.add_road("r12", n1, n2, 10);
+    prats.add_road("r21", n2, n3, 10);
+    prats.add_road("r31", n3, n1, 10);
 
-    string a;
-    cout << currentNode->get_name() << endl;
-    while (cin >> a)
-    {
-        currentNode = currentNode->get_connections()[0];
-        cout << currentNode->get_name() << endl;
-    }
+    return 0;
 }
