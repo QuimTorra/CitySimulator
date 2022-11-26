@@ -5,6 +5,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
+#include "visualizerCity.hpp"
+#include "../City.hpp"
+
 
 //Simulation Engine
 
@@ -15,6 +18,9 @@ private:
     sf::RenderWindow* window;
     sf::VideoMode videoMode;
     sf::Event ev;
+
+    visualizerCity cityAux;
+    City city;
 
     //
     sf::RectangleShape car;

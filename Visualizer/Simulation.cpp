@@ -1,5 +1,5 @@
 #pragma once
-#include "Simulation.h"
+#include "Simulation.hpp"
 //Simulation Engine
 
 void Simulation::initVariables() {
@@ -16,15 +16,8 @@ void Simulation::initWindow() {
 
 void Simulation::initObjects() {
 
-    //attrb
-    this->car.setSize(sf::Vector2(50.f, 25.f));
-    this->car.setFillColor(sf::Color{0, 33, 217, 255});
-    this->car.setOutlineColor(sf::Color{0, 13, 87, 255});
-    this->car.setOutlineThickness(3.f);
-
-    //pos
-    this->car.setOrigin(sf::Vector2f(this->car.getLocalBounds().width, this->car.getLocalBounds().height) / 2.f);
-    this->car.setPosition(10.f, 10.f);
+    //load road objects for drawing
+    cityAux.initCity(city.getRoads(), city.getCrosswalks());
 }
 
 Simulation::Simulation() {
@@ -50,10 +43,6 @@ void Simulation::pollEvents() {
             break;
         case sf::Event::KeyPressed:
             if (this->ev.key.code == sf::Keyboard::Escape) this->window->close();
-            if (this->ev.key.code == sf::Keyboard::Left) this->car.rotate(-5.f);
-            else if (this->ev.key.code == sf::Keyboard::Right) this->car.rotate(5.f);
-            if (this->ev.key.code == sf::Keyboard::Up) this->car.move(1.f, 0.f);
-            else if (this->ev.key.code == sf::Keyboard::Down) this->car.move(1.f, 0.f);
             break;
         }
     }
@@ -77,7 +66,7 @@ void Simulation::render() {
     this->window->clear();
 
     //draw
-    this->window->draw(this->car);
+    cityAux.draw(this->window);
 
     this->window->display();
 }
