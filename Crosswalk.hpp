@@ -10,16 +10,11 @@ class Crosswalk : public Node
 {
     int t_cotxes;
     int t_vianants;
-    //std::string name;
+    // std::string name;
     Semafor sem;
+
 public:
     Crosswalk();
-
-    /**
-     * @brief Construct a new Crosswalk object
-     *
-     * @param id identifier of the Crosswalk
-     */
 
     Crosswalk(std::string name, int t_cotxes, int t_vianants);
 
@@ -30,7 +25,6 @@ public:
     int get_t_vianants();
 
     std::string get_name();
-
 };
 
 #endif

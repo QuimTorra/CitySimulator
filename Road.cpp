@@ -3,15 +3,11 @@
 Road::Road()
 {
     this->name = "undefined";
-    this->posStart = "undefined";
-    this->posEnd = "undefined";
 }
 
-Road::Road(std::string name, int pStart, int pEnd, int max_speed)
+Road::Road(std::string name, int max_speed)
 {
     this->name = name;
-    this->posStart = pStart;
-    this->posEnd = pEnd;
     this->max_speed = max_speed;
 }
 
@@ -22,56 +18,68 @@ std::string Road::get_name()
 
 float Road::get_length()
 {
-    float length (((x2 - x1)**2 +(y2 - y1)**2)**0.5);
+    int x1 = this->posStart.first;
+    int y1 = this->posStart.second;
+    int x2 = this->posEnd.first;
+    int y2 = this->posEnd.second;
+    float m1 = (x2 - x1);
+    float m2 = (y2 - y1);
+    float length(sqrt(m1 * m1 + m2 * m2));
 
-    if (length < 0) {
-        length = length*-1;
+    if (length < 0)
+    {
+        length = length * -1;
     }
 
     return length;
 }
 
-//mid point
-int Road::getMidPoint()
+// mid point
+std::pair<int, int> Road::get_mid_point()
 {
-    pair<int, int> midPoint;
+    std::pair<int, int> midPoint;
     int x1 = posStart.first;
-    int x2 = posStart.second;
+    int y1 = posStart.second;
 
-    int y1 = posEnd.first;
+    int x2 = posEnd.first;
     int y2 = posEnd.second;
 
-    midPoint.first = (float)(x1+x2)/2;
-    midPoint.second = (float)(y1+y2)/2; 
+    midPoint.first = (float)(x1 + x2) / 2;
+    midPoint.second = (float)(y1 + y2) / 2;
 
-    return MidPoint;
+    return midPoint;
 }
 
-//angle
-float Road::getAngle() 
+// angle
+float Road::get_angle()
 {
-    float angle atan2(posStart.y - posEnd.y, posStart.x - posEnd.x).
+    float angle = atan2(posStart.second - posEnd.second, posStart.first - posEnd.first);
     return angle;
 }
 
-//struc
-struct Road:: getInfo()
+// struc
+info Road::get_info()
 {
-    struct {             // Structure declaration
-        pair<int, int> midPos;         // Member (int variable)
-        float length;   // Member (string variable)
-        float angle;
-    } myStructure; 
-    
-    myStructure.midPos = this.getMidPoint;
-    myStructure.length = this.get_length;
-    myStructure.angle = this.getAngle;
+    info infoObject;
 
-    return myStructure;
+    infoObject.midPos = this->get_mid_point();
+    infoObject.length = this->get_length();
+    infoObject.angle = this->get_angle();
+
+    return infoObject;
 };
-
 
 int Road::get_max_speed()
 {
     return this->max_speed;
+}
+
+void Road::set_start_pos(std::pair<int, int> pos)
+{
+    this->posStart = pos;
+}
+
+void Road::set_end_pos(std::pair<int, int> pos)
+{
+    this->posEnd = pos;
 }
