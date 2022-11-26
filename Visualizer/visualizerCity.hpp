@@ -19,4 +19,5 @@ public:
 
     void initCity(const std::vector<infoRoad> &Rs);
     void draw(sf::RenderWindow *window);
+    void move(float x, float y);
 };

@@ -6,19 +6,22 @@ visualizerCity::~visualizerCity(){};
 
 void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 {
-    std::cout << "initCityAux, size of: " << Rs.size() << std::endl;
+    int size = Rs.size();
+    this->Roads = std::vector<sf::RectangleShape>(size);
     // BUILD ROADS
-    for (auto r : Rs)
+    for (int i = 0; i < size; ++i)
     {
         // attrb
         sf::RectangleShape R;
-        R.setSize(sf::Vector2(20.f, r.length));
+        R.setSize(sf::Vector2(24.f, Rs[i].length));
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos
-        R.setOrigin(sf::Vector2f(10.f, r.length / 2.f));
-        R.setPosition(r.pos.first, r.pos.second);
-        R.rotate(r.angle);
+        R.setOrigin(sf::Vector2f(12.f, Rs[i].length / 2.f));
+        R.setPosition(Rs[i].pos.first, Rs[i].pos.second);
+        std::cout << Rs[i].pos.first << " " << Rs[i].pos.second << " " << Rs[i].angle << std::endl;
+        R.rotate(Rs[i].angle);
+        this->Roads[i] = R;
     }
 
     // BUILD CROSSWALKS
@@ -38,7 +41,12 @@ void visualizerCity::draw(sf::RenderWindow *window)
     int size = this->Roads.size();
     for (int i = 0; i < size; ++i)
     {
-        std::cout << "printing: " << i << std::endl;
         window->draw(Roads[i]);
     }
+}
+
+void visualizerCity::move(float x, float y)
+{
+    this->Roads[2].move(x, y);
+    std::cout << Roads[2].getPosition().x << " " << Roads[2].getPosition().y << std::endl;
 }

@@ -17,7 +17,6 @@ std::vector<Node> City::get_nodes()
 
 std::vector<infoRoad> City::get_roads()
 {
-    std::cout << "cityRoads, size of: " << roads.size() << std::endl;
     int size = roads.size();
     std::vector<infoRoad> result(size);
     for (int i = 0; i < size; ++i)
@@ -47,7 +46,7 @@ void City::add_node(Node n)
 
 void City::add_road(std::string name, Node &origin, Node &end, int max_speed)
 {
-    Road r = Road(name, max_speed);
+    Road r = Road(name, max_speed, origin.get_pos(), end.get_pos());
     origin.add_connection(end, r);
     this->roads.push_back(r);
     this->rendering_info.push_back(r.get_info());
