@@ -7,6 +7,7 @@ enum color{Vermell, Groc, Verd};
 
 class Semafor
 {
+    std::string nom;
     std::pair<int,int> Pos;
     int t_cotxes;
     int t_vianants;
@@ -23,7 +24,7 @@ public:
      * @param t_vianants amount of seconds that the pedestrians have to pass
      */
 
-    Semafor(int x, int y, int t_cotxes, int t_vianants);
+    Semafor(std::string nom, int x, int y, int t_cotxes, int t_vianants);
 
     int get_t_cotxes();
 

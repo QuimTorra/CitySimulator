@@ -1,7 +1,8 @@
 #include "Semafor.hpp"
 
-Semafor::Semafor(int x, int y, int t_cotxes, int t_vianants)
+Semafor::Semafor(std::string nom, int x, int y, int t_cotxes, int t_vianants)
 {
+    this->nom = nom;
     std::pair<int,int> p;
     p.first = x;
     p.second = y;
