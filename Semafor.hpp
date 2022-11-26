@@ -3,14 +3,18 @@
 
 #include <string>
 
+enum color{Vermell, Groc, Verd};
+
 class Semafor
 {
     std::pair<int,int> Pos;
     int t_cotxes;
     int t_vianants;
+    int i_groc;
+    color c;
 
 public:
-    Semafor();
+    Semafor() {}
 
     /**
      * @brief Constructs a new Semafor object
@@ -24,6 +28,10 @@ public:
     int get_t_cotxes();
 
     int get_t_vianants();
+
+    color get_color();
+
+    void change_color(color co);
 
     std::pair<int,int> getPos();
 };
