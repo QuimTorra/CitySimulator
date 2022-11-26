@@ -7,6 +7,12 @@
 #include <map>
 #include "Road.hpp"
 
+struct infoNode
+{
+    std::pair<int, int> pos;
+    float angle;
+};
+
 class Node
 {
     std::string name;
@@ -23,6 +29,8 @@ public:
      * @param name string representing the node
      */
     Node(std::string name, int x, int y);
+
+    infoNode get_info();
 
     std::string get_name();
     std::pair<int, int> get_pos();

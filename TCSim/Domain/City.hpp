@@ -23,6 +23,7 @@ public:
     std::vector<Node> get_nodes();
     Node get_node(std::string nomNode);
     std::vector<infoRoad> get_roads();
+    std::vector<infoNode> get_info_nodes();
     std::vector<infoRoad> get_rendering_info();
     std::string get_nom();
 

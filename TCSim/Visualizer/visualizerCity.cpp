@@ -40,6 +40,19 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
         C.setTexture(&this->crosswalkTexture);
         this->CrossWalks[i] = C;
     }*/
+
+    // Nodes
+    /*size = Ns.size();
+    this->Nodes = std::vector<sf::CircleShape>(size);
+    // BUILD NODES
+    for (int i = 0; i < size; ++i)
+    {
+        sf::CircleShape N;
+        N.setRadius(12.f);
+        N.setOrigin(sf::Vector2f(12.f, 12.f));
+        N.setPosition(c.pos.first.f, c.pos.second.f);
+        this->Nodes[i] = C;
+    }*/
 }
 void visualizerCity::draw(sf::RenderWindow *window)
 {
@@ -53,5 +66,12 @@ void visualizerCity::draw(sf::RenderWindow *window)
     for (int i = 0; i < size; ++i)
     {
         window->draw(CrossWalks[i]);
+    }*/
+
+    /*
+    size = this->Nodes.size();
+    for (int i = 0; i < size; ++i)
+    {
+        window->draw(Nodes[i]);
     }*/
 }

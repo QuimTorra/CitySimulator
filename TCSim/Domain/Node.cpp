@@ -39,3 +39,10 @@ void Node::add_connection(Node &n, Road r)
     r.set_start_pos(this->pos);
     r.set_end_pos(n.get_pos());
 }
+
+infoNode Node::get_info()
+{
+    infoNode result;
+    result.pos = this->pos;
+    result.angle = this->connections[0].second.get_angle();
+}
