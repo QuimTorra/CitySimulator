@@ -54,7 +54,10 @@ int main()
     }
     else cout<<"El document no sha llegit correctament"<<endl;
 
+    std::vector<Node> nodes = prats.get_nodes();
+    std::vector<infoRoad> inforoads = prats.get_roads(); 
 
+    
 
 
 
