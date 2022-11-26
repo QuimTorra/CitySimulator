@@ -8,8 +8,9 @@ using namespace std;
 void write(Agent a)
 {
     cout << "<<------------------------------>>" << endl;
-    cout << "Current: " << a.get_current_node()->get_name() << endl;
-    cout << "Next: " << a.get_next_node()->get_name() << endl;
+    cout << "s: " << a.get_state() << endl;
+    cout << "Current: " << a.get_current_node().get_name() << endl;
+    cout << "Next: " << a.get_next_node().get_name() << endl;
     cout << "Ticks to next: " << a.get_ticks_left() << endl;
 }
 
@@ -30,8 +31,6 @@ int main()
     Agent car = Agent(n1, n3, 1);
 
     char a;
-    cout << "<<------------------------------>>" << endl;
-    cout << "Current: " << car.get_current_node()->get_name() << endl;
 
     while (cin >> a)
     {

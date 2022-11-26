@@ -18,6 +18,7 @@ class City
 public:
     City();
     City(std::string name);
+    ~City() {}
 
     std::vector<Node> get_nodes();
     std::vector<infoRoad> get_roads();

@@ -2,12 +2,12 @@
 
 Agent::Agent() {}
 
-Agent::Agent(Node &starting_pos, Node &destiny, int speed)
+Agent::Agent(Node starting_pos, Node destiny, int speed)
 {
     this->state = 0; // An agent always starts on a node
 
-    this->current_pos = &starting_pos;
-    this->destiny = &destiny;
+    this->next = starting_pos;
+    this->destiny = destiny;
     this->speed = speed;
 
     this->draw_pos = std::pair<int, int>(starting_pos.get_pos());
@@ -18,12 +18,12 @@ int Agent::get_state()
     return this->state;
 }
 
-Node *Agent::get_current_node()
+Node Agent::get_current_node()
 {
     return this->current_pos;
 }
 
-Node *Agent::get_next_node()
+Node Agent::get_next_node()
 {
     return this->next;
 }
@@ -55,22 +55,22 @@ void Agent::set_speed(int speed)
 
 void Agent::tick()
 {
-    // Keep traversing until next node is reached, then choose new next
     if (this->state == 0)
     {
-        this->next = this->current_pos->get_random_connection();
-        int length = this->current_pos->get_road(this->next->get_name()).get_length();
-        this->ticks_left = int(length / this->speed);
+        this->current_pos = this->next;
+        std::pair<Node *, Road> conn = this->current_pos.get_random_connection();
+        this->next = *(conn.first);
+        this->ticks_left = conn.second.get_length();
+
         this->state = 1;
     }
     else if (this->state == 1)
     {
-        this->ticks_left -= 1;
+        this->ticks_left--;
 
-        if (this->ticks_left == 0)
+        if (ticks_left <= 0)
         {
             this->state = 0;
-            this->current_pos = this->next;
         }
     }
 }
