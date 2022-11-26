@@ -3,13 +3,7 @@
 
 #include <string>
 #include <cmath>
-
-struct info
-{
-    std::pair<int, int> midPos;
-    float length;
-    float angle;
-};
+#include <utility>
 
 class Road
 {
@@ -27,7 +21,7 @@ public:
     int get_max_speed();
     std::pair<int, int> get_mid_point();
     float get_angle();
-    info get_info();
+    infoRoad get_info();
 
     void set_start_pos(std::pair<int, int> pos);
     void set_end_pos(std::pair<int, int> pos);

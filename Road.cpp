@@ -58,11 +58,11 @@ float Road::get_angle()
 }
 
 // struc
-info Road::get_info()
+infoRoad Road::get_info()
 {
-    info infoObject;
+    infoRoad infoObject;
 
-    infoObject.midPos = this->get_mid_point();
+    infoObject.pos = this->get_mid_point();
     infoObject.length = this->get_length();
     infoObject.angle = this->get_angle();
 

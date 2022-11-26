@@ -2,28 +2,26 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <utility>
+#include <vector>
 
-struct road {
-    pair<int,int> pos;
+struct infoRoad
+{
+    std::pair<int, int> pos;
     float lenght;
     float angle;
 };
 
-struct crosswalk {
-    pair<int,int> pos;
-    float angle;
-};
-
-class visualizerCity 
+class visualizerCity
 {
 private:
-    //var
-    vector<sf::RectangleShape> Roads;
-    
+    // var
+    std::vector<sf::RectangleShape> Roads;
+
 public:
-    void visualizerCity();
-    void ~visualizerCity();
-    
-    void initCity(const vector<road>& Rs, const vector<crosswalk>& Cs);
-    void draw(sf::RenderWindow window);
- };
+    visualizerCity();
+    ~visualizerCity();
+
+    void initCity(const std::vector<infoRoad> &Rs);
+    void draw(sf::RenderWindow *window);
+};
