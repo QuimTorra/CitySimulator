@@ -8,6 +8,7 @@
 #include "visualizerCity.hpp"
 #include "../City.hpp"
 #include "Button.hpp"
+#include "Menu.hpp"
 #include <string>
 
 // Simulation Engine
@@ -20,7 +21,10 @@ private:
     sf::VideoMode videoMode;
     sf::Event ev;
 
+    Menu menu;
     Button doSomething;
+    Button doSomething2;
+    Button Quit;
 
     visualizerCity cityAux;
     City city;

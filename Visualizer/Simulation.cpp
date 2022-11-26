@@ -84,7 +84,10 @@ void Simulation::initObjects()
 
     // load road objects for drawing
     this->cityAux.initCity(city.get_roads());
-    this->doSomething.init(920.f, 75.f, 140.f, 35.f, "Do Something");
+    this->doSomething.init(920.f, 70.f, 140.f, 35.f, "Do Something");
+    this->doSomething2.init(920.f, 130.f, 140.f, 35.f, "Do Something2");
+    this->Quit.init(920.f, 190.f, 70.f, 35.f, "Quit");
+    this->menu.init();
 }
 
 Simulation::Simulation()
@@ -117,10 +120,16 @@ void Simulation::pollEvents()
         case sf::Event::MouseButtonPressed:
         case sf::Event::MouseMoved:
             this->doSomething.update(sf::Mouse::getPosition(*this->window));
+            this->doSomething2.update(sf::Mouse::getPosition(*this->window));
+            this->Quit.update(sf::Mouse::getPosition(*this->window));
             if (this->doSomething.isPressed())
             {
                 std::cout << "Event activated" << std::endl;
             }
+            else if (this->Quit.isPressed())
+                this->window->close();
+            else if (this->doSomething2.isPressed())
+                std::cout << "Event activated 2" << std::endl;
             break;
         }
     }
@@ -147,7 +156,10 @@ void Simulation::render()
 
     // draw
     cityAux.draw(window);
+    menu.draw(window);
     doSomething.draw(window);
+    doSomething2.draw(window);
+    Quit.draw(window);
 
     this->window->display();
 }

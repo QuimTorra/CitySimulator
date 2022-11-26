@@ -13,7 +13,8 @@ class visualizerCity
 private:
     // var
     std::vector<sf::RectangleShape> Roads;
-    Button doSomething;
+    // std::vector<sf::RectangleShape> Crosswalk;
+    // sf::Texture crosswalkTexture;
 
 public:
     visualizerCity();
