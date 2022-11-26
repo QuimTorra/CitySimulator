@@ -86,16 +86,16 @@ std::vector<infoNode> City::get_info_nodes()
     return result;
 }
 
-Node City::get_node(std::string nomNode)
+Node *City::get_node(std::string nomNode)
 {
     std::vector<Node> n = get_nodes();
     for (int i = 0; i < n.size(); ++i)
     {
         if (n[i].get_name() == nomNode)
-            return nodes[i];
+            return &nodes[i];
     }
     cout << "No sha trobat el node " << nomNode << endl;
-    return Node();
+    return nullptr;
 }
 
 std::string City::get_nom()
