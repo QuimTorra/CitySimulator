@@ -50,7 +50,7 @@ std::pair<int, int> Agent::get_draw_pos()
 
 float Agent::get_angle() 
 {
-    return 1;
+    return this->act_road.get_angle();
 }
 
 void Agent::set_speed(int speed)
