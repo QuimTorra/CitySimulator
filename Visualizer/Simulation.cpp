@@ -1,5 +1,4 @@
 #include "Simulation.hpp"
-#include <string>
 // Simulation Engine
 
 void Simulation::initVariables()
@@ -36,17 +35,14 @@ void Simulation::initVariables()
     this->city.add_road("r1", n01, n02, 1);
     this->city.add_road("r2", n02, n03, 1);
     this->city.add_road("r3", n03, n04, 1);
-
     this->city.add_road("r4", n10, n11, 1);
     this->city.add_road("r5", n11, n12, 1);
     this->city.add_road("r6", n12, n13, 1);
     this->city.add_road("r7", n13, n14, 1);
-
     this->city.add_road("r8", n20, n21, 1);
     this->city.add_road("r9", n21, n22, 1);
     this->city.add_road("r10", n22, n23, 1);
     this->city.add_road("r11", n23, n24, 1);
-
     this->city.add_road("r12", n30, n31, 1);
     this->city.add_road("r13", n31, n32, 1);
     this->city.add_road("r14", n32, n33, 1);
@@ -56,19 +52,15 @@ void Simulation::initVariables()
     this->city.add_road("v0", n00, n10, 1);
     this->city.add_road("v1", n10, n20, 1);
     this->city.add_road("v2", n20, n30, 1);
-
     this->city.add_road("v3", n01, n11, 1);
     this->city.add_road("v4", n11, n21, 1);
     this->city.add_road("v5", n21, n31, 1);
-
     this->city.add_road("v6", n02, n12, 1);
     this->city.add_road("v7", n12, n22, 1);
     this->city.add_road("v8", n22, n32, 1);
-
     this->city.add_road("v6", n03, n13, 1);
     this->city.add_road("v7", n13, n23, 1);
     this->city.add_road("v8", n23, n33, 1);
-
     this->city.add_road("v6", n04, n14, 1);
     this->city.add_road("v7", n14, n24, 1);
     this->city.add_road("v8", n24, n34, 1);
@@ -91,7 +83,8 @@ void Simulation::initObjects()
 {
 
     // load road objects for drawing
-    cityAux.initCity(city.get_roads());
+    this->cityAux.initCity(city.get_roads());
+    this->doSomething.init(920.f, 75.f, 140.f, 35.f, "Do Something");
 }
 
 Simulation::Simulation()
@@ -120,15 +113,14 @@ void Simulation::pollEvents()
             // send close window event
             window->close();
             break;
-        case sf::Event::KeyPressed:
-            if (this->ev.key.code == sf::Keyboard::Up)
-                this->cityAux.move(0.f, -10.f);
-            if (this->ev.key.code == sf::Keyboard::Left)
-                this->cityAux.move(-10.f, 0.f);
-            if (this->ev.key.code == sf::Keyboard::Right)
-                this->cityAux.move(10.f, 0.f);
-            if (this->ev.key.code == sf::Keyboard::Down)
-                this->cityAux.move(0.f, 10.f);
+        case sf::Event::MouseButtonReleased:
+        case sf::Event::MouseButtonPressed:
+        case sf::Event::MouseMoved:
+            this->doSomething.update(sf::Mouse::getPosition(*this->window));
+            if (this->doSomething.isPressed())
+            {
+                std::cout << "Event activated" << std::endl;
+            }
             break;
         }
     }
@@ -155,6 +147,7 @@ void Simulation::render()
 
     // draw
     cityAux.draw(window);
+    doSomething.draw(window);
 
     this->window->display();
 }

@@ -1,55 +1,61 @@
 #include "Button.hpp"
+#include <iostream>
 
-//https://www.youtube.com/watch?v=xtBNgDncRnU  min 9
-//https://www.youtube.com/watch?v=HjkWqCa7Ktw
+// https://www.youtube.com/watch?v=xtBNgDncRnU  min 9
+// https://www.youtube.com/watch?v=HjkWqCa7Ktw
 
-Button::Button(float x, float y, float width, float height, std::string text, sf::Color idle, sf::Color hover, sf::Color active) 
-: idle(idle),hover(hover),active(active)
+Button::Button() {}
+
+Button::~Button() {}
+
+void Button::init(float x, float y, float width, float height, std::string text)
 {
     this->buttonState = BTN_IDLE;
+    this->idle = sf::Color{118, 118, 118, 255};
+    this->hover = sf::Color{98, 98, 98, 255};
+    this->active = sf::Color{78, 78, 78, 255};
+    this->font.loadFromFile("Montserrat-Bold.ttf");
 
-    this->shape.setPosition(sf::Vector2f(x,y));
+    this->shape.setPosition(sf::Vector2f(x, y));
     this->shape.setSize(sf::Vector2f(width, height));
-    this->text.setString(text);
-    this->text.setFillColor(sf::Color(70,70,70,200));
-    this->text.setCharacterSize(12);
-    this->text.setPosition(
-        this->shape.getPosition().x / 2.f - this->text.getGlobalBounds().width / 2.f,
-        this->shape.getPosition().y / 2.f - this->text.getGlobalBounds().height / 2.f
-    );
+    this->shape.setOrigin(sf::Vector2f(width / 2, height / 2));
+    this->shape.setOutlineColor(sf::Color{15, 15, 15, 255});
+    this->shape.setOutlineThickness(2.f);
     this->shape.setFillColor(this->idle);
+
+    this->text.setFont(this->font);
+    this->text.setString(text);
+    this->text.setFillColor(sf::Color(15, 15, 15, 255));
+    this->text.setCharacterSize(17);
+    this->text.setOrigin(this->text.getGlobalBounds().width / 2.f, this->text.getGlobalBounds().height / 2.f);
+    this->text.setPosition(sf::Vector2f(x, y));
 }
 
-Button::~Button()
-{
-
-}
-//Acces
+// Acces
 const bool Button::isPressed() const
 {
-    if(this->buttonState == BTN_ACTIVE) {
+    if (this->buttonState == BTN_ACTIVE)
+    {
         return true;
     }
     return false;
 }
-//Function
-void Button::update(const sf::Vector2f mousePos)
+// Function
+void Button::update(const sf::Vector2<int> mousePos)
 {
-    //idle
+    // idle
     this->buttonState = BTN_IDLE;
 
-    //hover
-
-    if (this->shape.getGlobalBounds().contains(mousePos)) 
+    // hover
+    if (this->shape.getGlobalBounds().contains(sf::Vector2f(mousePos.x, mousePos.y)))
     {
         this->buttonState = BTN_HOVER;
 
-        //Pressed
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+        // Pressed
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             this->buttonState = BTN_ACTIVE;
         }
-
     }
 
     switch (this->buttonState)
@@ -69,13 +75,10 @@ void Button::update(const sf::Vector2f mousePos)
         this->shape.setFillColor(sf::Color::Red);
         break;
     }
-
 }
 
-void Button::render(sf::RenderTarget * target) 
+void Button::draw(sf::RenderWindow *window)
 {
-    target->draw(this->shape);
+    window->draw(this->shape);
+    window->draw(this->text);
 }
-
-
-

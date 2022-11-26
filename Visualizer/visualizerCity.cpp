@@ -19,7 +19,6 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
         // pos
         R.setOrigin(sf::Vector2f(12.f, Rs[i].length / 2.f));
         R.setPosition(Rs[i].pos.first, Rs[i].pos.second);
-        std::cout << Rs[i].pos.first << " " << Rs[i].pos.second << " " << Rs[i].angle << std::endl;
         R.rotate(Rs[i].angle);
         this->Roads[i] = R;
     }
@@ -43,10 +42,4 @@ void visualizerCity::draw(sf::RenderWindow *window)
     {
         window->draw(Roads[i]);
     }
-}
-
-void visualizerCity::move(float x, float y)
-{
-    this->Roads[2].move(x, y);
-    std::cout << Roads[2].getPosition().x << " " << Roads[2].getPosition().y << std::endl;
 }

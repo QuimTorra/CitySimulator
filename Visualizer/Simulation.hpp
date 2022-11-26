@@ -8,18 +8,19 @@
 #include "visualizerCity.hpp"
 #include "../City.hpp"
 #include "Button.hpp"
+#include <string>
 
-//Simulation Engine
+// Simulation Engine
 
-class Simulation 
+class Simulation
 {
 private:
-    //var
-    sf::RenderWindow* window;
+    // var
+    sf::RenderWindow *window;
     sf::VideoMode videoMode;
     sf::Event ev;
 
-    Button* start;
+    Button doSomething;
 
     visualizerCity cityAux;
     City city;
@@ -27,19 +28,19 @@ private:
     //
     sf::RectangleShape car;
 
-    //func
+    // func
     void initVariables();
     void initWindow();
     void initObjects();
     void inibtn();
-    
-public:
-        Simulation();
-        virtual ~Simulation();
 
-        //func
-        const bool running() const;
-        void pollEvents();
-        void update();
-        void render();
+public:
+    Simulation();
+    virtual ~Simulation();
+
+    // func
+    const bool running() const;
+    void pollEvents();
+    void update();
+    void render();
 };
