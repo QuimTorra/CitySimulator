@@ -1,6 +1,8 @@
+#include "visualizerCity.hpp"
+
 visualizerCity::visualizerCity(){};
 
-visualizerCity::~visualizerCity();
+visualizerCity::~visualizerCity(){};
 
 void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 {
@@ -15,7 +17,7 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 
         // pos
         R.setOrigin(sf::Vector2f(10.f, r.lenght / 2.f));
-        R.setPosition(r.pos.first.f, r.pos.second.f);
+        R.setPosition(r.pos.first, r.pos.second);
         R.rotate(r.angle);
     }
 
@@ -33,9 +35,9 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 }
 void visualizerCity::draw(sf::RenderWindow *window)
 {
-
-    for (this->Roads : RectangleShape r)
+    int size = this->Roads.size();
+    for (int i = 0; i < size; ++i)
     {
-        window->draw(r);
+        window->draw(Roads[i]);
     }
 }
