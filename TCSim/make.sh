@@ -1,0 +1,1 @@
+g++ -o TCSim main.cpp Visualizer/Button.cpp Visualizer/Menu.cpp Visualizer/Simulation.cpp Visualizer/visualizerCity.cpp Domain/Agent.cpp Domain/City.cpp Domain/Crosswalk.cpp Domain/Node.cpp Domain/Road.cpp Domain/Semafor.cpp Data/Lector.cpp -lsfml-graphics -lsfml-window -lsfml-system

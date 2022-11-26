@@ -7,18 +7,19 @@ void Menu::init()
 {
     this->font.loadFromFile("Montserrat-Bold.ttf");
 
-    this->shape.setPosition(750.f, 0.f);
     this->shape.setSize(sf::Vector2f(270.f, 300.f));
+    this->shape.setPosition(750.f, 0.f);
     this->shape.setOutlineColor(sf::Color{15, 15, 15, 255});
     this->shape.setOutlineThickness(1.f);
-    this->shape.setFillColor(sf::Color{118, 118, 118, 255});
+    this->shape.setFillColor(sf::Color{138, 138, 138, 255});
 
     this->text.setFont(this->font);
+    this->text.setStyle(sf::Text::Underlined);
     this->text.setString("Traffic Simulator");
     this->text.setFillColor(sf::Color(15, 15, 15, 255));
     this->text.setCharacterSize(27);
     this->text.setOrigin(this->text.getGlobalBounds().width / 2.f, this->text.getGlobalBounds().height / 2.f);
-    //this->text.setPosition(this->shape.getPointCount().x, 15);
+    this->text.setPosition(this->shape.getPosition().x + 135.f, 20.f);
 };
 void Menu::draw(sf::RenderWindow *window)
 {

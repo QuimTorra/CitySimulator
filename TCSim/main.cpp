@@ -17,3 +17,5 @@ int main()
 
     return 0;
 }
+
+// g++ main.cpp Simulation.cpp ../City.cpp -o prog -lsfml-graphics -lsfml-window -lsfml-system

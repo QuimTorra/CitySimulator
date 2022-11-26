@@ -25,12 +25,10 @@ private:
     Button doSomething;
     Button doSomething2;
     Button Quit;
+    sf::RectangleShape car;
 
     visualizerCity cityAux;
     City city;
-
-    //
-    sf::RectangleShape car;
 
     // func
     void initVariables();

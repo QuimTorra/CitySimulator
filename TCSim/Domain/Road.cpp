@@ -15,11 +15,6 @@ Road::Road(std::string name, int max_speed, std::pair<int, int> origin, std::pai
     this->posEnd = end;
 }
 
-std::string Road::get_name()
-{
-    return this->name;
-}
-
 float Road::get_length()
 {
     int x1 = this->posStart.first;
@@ -59,7 +54,7 @@ std::pair<int, int> Road::get_mid_point()
 float Road::get_angle()
 {
     float angle = atan2(posStart.second - posEnd.second, posStart.first - posEnd.first);
-    return 90.f + angle * (180.f * 3.1416);
+    return 90.f + angle * (180.f * M_1_PI);
 }
 
 // struc

@@ -5,6 +5,10 @@ void Simulation::initVariables()
 {
     this->window = nullptr;
 
+    this->car.setSize(sf::Vector2f(25.f, 60.f));
+    this->car.setOrigin(this->car.getGlobalBounds().width / 2.f, this->car.getGlobalBounds().height / 2.f);
+    this->car.setFillColor(sf::Color{255, 0, 0, 255});
+
     // create city
     this->city = City("Prats de Lluçanès");
 
@@ -84,9 +88,9 @@ void Simulation::initObjects()
 
     // load road objects for drawing
     this->cityAux.initCity(city.get_roads());
-    this->doSomething.init(920.f, 70.f, 140.f, 35.f, "Do Something");
-    this->doSomething2.init(920.f, 130.f, 140.f, 35.f, "Do Something2");
-    this->Quit.init(920.f, 190.f, 70.f, 35.f, "Quit");
+    this->doSomething.init(840.f, 80.f, 140.f, 35.f, "Do Something");
+    this->doSomething2.init(840.f, 135.f, 140.f, 35.f, "Do Something2");
+    this->Quit.init(840.f, 190.f, 70.f, 35.f, "Quit");
     this->menu.init();
 }
 
@@ -112,6 +116,26 @@ void Simulation::pollEvents()
     {
         switch (this->ev.type)
         {
+        case sf::Event::KeyPressed:
+            if (this->ev.key.code == sf::Keyboard::Up)
+            {
+                float radians = 3.1415926536 / 180 * this->car.getRotation();
+                float x = 10.f * sin(radians);
+                float y = 10.f * -cos(radians);
+                this->car.move(-x, -y);
+            }
+            if (this->ev.key.code == sf::Keyboard::Down)
+            {
+                float radians = 3.1415926536 / 180 * this->car.getRotation();
+                float x = 10.f * sin(radians);
+                float y = 10.f * -cos(radians);
+                this->car.move(x, y);
+            }
+            if (this->ev.key.code == sf::Keyboard::Left)
+                this->car.rotate(-6.f);
+            if (this->ev.key.code == sf::Keyboard::Right)
+                this->car.rotate(6.f);
+            break;
         case sf::Event::Closed:
             // send close window event
             window->close();
@@ -160,6 +184,7 @@ void Simulation::render()
     doSomething.draw(window);
     doSomething2.draw(window);
     Quit.draw(window);
+    window->draw(this->car);
 
     this->window->display();
 }
