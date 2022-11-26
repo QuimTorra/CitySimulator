@@ -26,6 +26,31 @@ void Simulation::set_simulation_speed(float speed)
     this->simulation_speed = speed;
 }
 
+void Simulation::iniAgents() {
+
+    int numA = this->max_agents;
+
+    for (int i = 0; i < numA; ++i) {
+        //const speed 1
+        std::vector<Node> nodes = city.get_nodes();
+        //random node
+        int idNode = (std::rand() % ((nodes.size() - 1) - 0 + 1));
+
+        Agent a = Agent(nodes[idNode], 1);
+        this->agents.push_back(a);
+    }
+}
+
+/* 
+visual ticks
+ */
 void Simulation::tick()
 {
+    int numA = this->max_agents;
+    for (int i = 0; i < numA; ++i) {
+        this->agents[i].tick();
+        std::pair<int, int> aPos = this->agents[i].get_draw_pos();
+
+        //render
+    }
 }

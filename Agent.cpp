@@ -2,12 +2,12 @@
 
 Agent::Agent() {}
 
-Agent::Agent(Node starting_pos, Node destiny, int speed)
+Agent::Agent(Node starting_pos, int speed)
 {
     this->state = 0; // An agent always starts on a node
 
     this->next = starting_pos;
-    this->destiny = destiny;
+    /* this->destiny = destiny; */
     this->speed = speed;
 
     this->draw_pos = std::pair<int, int>(starting_pos.get_pos());
@@ -53,13 +53,65 @@ void Agent::set_speed(int speed)
     this->speed = speed;
 }
 
+std::pair<int, int> Agent::move_position(std::pair<int, int> origenPos, float angle) {
+    std::pair<int, int> finalPos;
+    
+    //left
+    if (0 == angle){
+        finalPos.first = ++origenPos.first;
+        finalPos.second = origenPos.second;
+    }
+    //down
+    else if (90 == angle){
+        finalPos.first = origenPos.first;
+        finalPos.second = --origenPos.second;
+    }
+    //rigth
+    else if (180 == angle){
+        finalPos.first = --origenPos.first;
+        finalPos.second = origenPos.second;
+    }
+    //up
+    else if (270 == angle){
+        finalPos.first = origenPos.first;
+        finalPos.second = ++origenPos.second;
+    }
+
+    //DIAGONAL
+        /* //Q1
+        else if  (0 < angle and angle < 90) {
+            finalPos.first = origenPos.first + velcitat*angle;
+            finalPos.second = origenPos.second + velcitat* angle;
+        }
+        //Q2
+        else if (90 < angle and angle < 180) {
+            finalPos.first = origenPos.first + velcitat*angle;
+            finalPos.second = origenPos.second + velcitat*angle;
+        }
+        //Q3
+        else if (180 < angle and angle < 270) {
+            finalPos.first = origenPos.first + velcitat*angle;
+            finalPos.second = origenPos.second + velcitat*angle;
+        }
+        //Q4
+        else {
+            finalPos.first = origenPos.first + velcitat*angle;
+            finalPos.second = origenPos.second + velcitat*angle;
+        } */
+
+    return finalPos;
+}
+
 void Agent::tick()
 {
     if (this->state == 0)
     {
+
         this->current_pos = this->next;
         std::pair<Node *, Road> conn = this->current_pos.get_random_connection();
         this->next = *(conn.first);
+        this->draw_pos = std::pair<int, int>(this->next.get_pos());
+        this->act_road = conn.second;
         this->ticks_left = conn.second.get_length();
 
         this->state = 1;
@@ -67,6 +119,11 @@ void Agent::tick()
     else if (this->state == 1)
     {
         this->ticks_left--;
+
+        float angle = this->act_road.get_angle();
+
+        //move position
+        this->draw_pos = move_position(draw_pos, angle);
 
         if (ticks_left <= 0)
         {

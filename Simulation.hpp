@@ -24,6 +24,8 @@ public:
     void set_max_agents(int max_agents);
     void set_simulation_speed(float speed);
 
+    void iniAgents();
+
     void tick();
 
 private:
