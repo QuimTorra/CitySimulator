@@ -100,6 +100,20 @@ Simulation::Simulation()
     this->initWindow();
     this->initObjects();
 }
+
+Simulation::Simulation(std::string filename) 
+{
+    this->window = nullptr;
+
+    this->car.setSize(sf::Vector2f(25.f, 60.f));
+    this->car.setOrigin(this->car.getGlobalBounds().width / 2.f, this->car.getGlobalBounds().height / 2.f);
+    this->car.setFillColor(sf::Color{255, 0, 0, 255});
+
+    this->city = City(filename);
+    this->initWindow();
+    this->initObjects();
+}
+
 Simulation::~Simulation()
 {
     delete this->window;

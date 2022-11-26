@@ -38,6 +38,7 @@ private:
 
 public:
     Simulation();
+    Simulation(std::string filepath);
     virtual ~Simulation();
 
     // func
