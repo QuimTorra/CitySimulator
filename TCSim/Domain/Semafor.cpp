@@ -27,10 +27,24 @@ std::pair<int,int> Semafor::getPos()
     return this->Pos;
 }
 
-
 color Semafor::get_color()
 {
     return this->c;
+}
+
+int Semafor::getCar_count() 
+{
+    return this->car_count;
+}
+
+void Semafor::set_inc_carCount()
+{
+    ++this->car_count;
+}
+
+void Semafor::set_dec_carCount()
+{
+    --this->car_count;
 }
 
 void Semafor::change_color(color co)

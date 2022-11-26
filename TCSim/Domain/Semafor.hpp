@@ -17,6 +17,7 @@ class Semafor
     int t_cotxes;
     int t_vianants;
     int i_groc;
+    int car_count;
     color c;
 
 public:
@@ -37,6 +38,11 @@ public:
     int get_t_vianants();
 
     color get_color();
+
+    int getCar_count();
+
+    void set_inc_carCount();
+    void set_dec_carCount();
 
     void change_color(color co);
 
