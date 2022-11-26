@@ -16,7 +16,7 @@ class Crosswalk : public Node
 public:
     Crosswalk();
 
-    Crosswalk(std::string name, int t_cotxes, int t_vianants);
+    Crosswalk(std::string name, int t_cotxes, int t_vianants, int x, int y);
 
     Crosswalk(std::string name, Semafor sem);
 
