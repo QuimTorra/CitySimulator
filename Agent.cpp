@@ -48,6 +48,11 @@ std::pair<int, int> Agent::get_draw_pos()
     return this->draw_pos;
 }
 
+float Agent::get_angle() 
+{
+
+}
+
 void Agent::set_speed(int speed)
 {
     this->speed = speed;
@@ -58,46 +63,46 @@ std::pair<int, int> Agent::move_position(std::pair<int, int> origenPos, float an
     
     //left
     if (0 == angle){
-        finalPos.first = ++origenPos.first;
+        finalPos.first = origenPos.first + this->speed;
         finalPos.second = origenPos.second;
     }
     //down
     else if (90 == angle){
         finalPos.first = origenPos.first;
-        finalPos.second = --origenPos.second;
+        finalPos.second = origenPos.second - this->speed;
     }
     //rigth
     else if (180 == angle){
-        finalPos.first = --origenPos.first;
+        finalPos.first = origenPos.first - this->speed;
         finalPos.second = origenPos.second;
     }
     //up
     else if (270 == angle){
         finalPos.first = origenPos.first;
-        finalPos.second = ++origenPos.second;
+        finalPos.second = origenPos.second + this->speed;
     }
 
     //DIAGONAL
-        /* //Q1
-        else if  (0 < angle and angle < 90) {
-            finalPos.first = origenPos.first + velcitat*angle;
-            finalPos.second = origenPos.second + velcitat* angle;
-        }
-        //Q2
-        else if (90 < angle and angle < 180) {
-            finalPos.first = origenPos.first + velcitat*angle;
-            finalPos.second = origenPos.second + velcitat*angle;
-        }
-        //Q3
-        else if (180 < angle and angle < 270) {
-            finalPos.first = origenPos.first + velcitat*angle;
-            finalPos.second = origenPos.second + velcitat*angle;
-        }
-        //Q4
-        else {
-            finalPos.first = origenPos.first + velcitat*angle;
-            finalPos.second = origenPos.second + velcitat*angle;
-        } */
+    //Q1
+    else if  (0 < angle and angle < 90) {
+        finalPos.first = origenPos.first + this->speed * angle;
+        finalPos.second = origenPos.second + this->speed * angle;
+    }
+    //Q2
+    else if (90 < angle and angle < 180) {
+        finalPos.first = origenPos.first + this->speed * angle;
+        finalPos.second = origenPos.second + this->speed * angle;
+    }
+    //Q3
+    else if (180 < angle and angle < 270) {
+        finalPos.first = origenPos.first + this->speed * angle;
+        finalPos.second = origenPos.second + this->speed * angle;
+    }
+    //Q4
+    else {
+        finalPos.first = origenPos.first + this->speed * angle;
+        finalPos.second = origenPos.second + this->speed * angle;
+    }
 
     return finalPos;
 }

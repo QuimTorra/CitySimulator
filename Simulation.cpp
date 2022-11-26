@@ -49,7 +49,10 @@ void Simulation::tick()
     int numA = this->max_agents;
     for (int i = 0; i < numA; ++i) {
         this->agents[i].tick();
-        std::pair<int, int> aPos = this->agents[i].get_draw_pos();
+        int velo = this->agents[i].get_speed();
+        float angle = this->agents[i].get_angle();
+
+        //std::pair<int, int> aPos = this->agents[i].get_draw_pos();
 
         //render
     }

@@ -33,7 +33,7 @@ public:
     int get_nodes_left();
     int get_ticks_left();
     std::pair<int, int> get_draw_pos();
-
+    float get_angle();
     void set_speed(int speed);
 
     std::pair<int, int> move_position(std::pair<int, int> origenPos, float angle);
