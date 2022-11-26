@@ -4,7 +4,7 @@ visualizerCity::visualizerCity(){};
 
 visualizerCity::~visualizerCity(){};
 
-void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
+void visualizerCity::initCity(const std::vector<infoRoad> &Rs, const std::vector<infoNode> &Ns)
 {
     int size = Rs.size();
     this->Roads = std::vector<sf::RectangleShape>(size);
@@ -42,7 +42,7 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
     }*/
 
     // Nodes
-    /*size = Ns.size();
+    size = Ns.size();
     this->Nodes = std::vector<sf::CircleShape>(size);
     // BUILD NODES
     for (int i = 0; i < size; ++i)
@@ -50,9 +50,9 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
         sf::CircleShape N;
         N.setRadius(12.f);
         N.setOrigin(sf::Vector2f(12.f, 12.f));
-        N.setPosition(c.pos.first.f, c.pos.second.f);
-        this->Nodes[i] = C;
-    }*/
+        N.setPosition(Ns[i].pos.first, Ns[i].pos.second);
+        this->Nodes[i] = N;
+    }
 }
 void visualizerCity::draw(sf::RenderWindow *window)
 {
@@ -68,10 +68,9 @@ void visualizerCity::draw(sf::RenderWindow *window)
         window->draw(CrossWalks[i]);
     }*/
 
-    /*
     size = this->Nodes.size();
     for (int i = 0; i < size; ++i)
     {
         window->draw(Nodes[i]);
-    }*/
+    }
 }

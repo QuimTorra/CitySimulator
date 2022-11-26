@@ -87,7 +87,7 @@ void Simulation::initObjects()
 {
 
     // load road objects for drawing
-    this->cityAux.initCity(city.get_roads());
+    this->cityAux.initCity(city.get_roads(), city.get_info_nodes());
     this->doSomething.init(840.f, 80.f, 140.f, 35.f, "Do Something");
     this->doSomething2.init(840.f, 135.f, 140.f, 35.f, "Do Something2");
     this->Quit.init(840.f, 190.f, 70.f, 35.f, "Quit");
@@ -101,7 +101,7 @@ Simulation::Simulation()
     this->initObjects();
 }
 
-Simulation::Simulation(std::string filename) 
+Simulation::Simulation(std::string filename)
 {
     this->window = nullptr;
 
