@@ -18,16 +18,16 @@ std::vector<Node> City::get_nodes()
 std::vector<infoRoad> City::get_roads()
 {
     int size = roads.size();
-    vector<infoRoad>(size) result;
+    std::vector<infoRoad> result(size);
     for (int i = 0; i < size; ++i)
     {
 
-        result[i] = r.get_info();
+        result[i] = roads[i].get_info();
     }
     return result;
 }
 
-std::vector<info> City::get_rendering_info()
+std::vector<infoRoad> City::get_rendering_info()
 {
     return this->rendering_info;
 }

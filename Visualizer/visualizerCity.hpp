@@ -2,15 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 #include <utility>
 #include <vector>
-
-struct infoRoad
-{
-    std::pair<int, int> pos;
-    float lenght;
-    float angle;
-};
+#include "../City.hpp"
 
 class visualizerCity
 {

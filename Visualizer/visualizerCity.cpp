@@ -1,12 +1,12 @@
-void visualizerCity::visualizerCity(){};
+visualizerCity::visualizerCity(){};
 
-void visualizerCity::~visualizerCity();
+visualizerCity::~visualizerCity();
 
-void visualizerCity::initCity(const vector<infoRoad> &Rs)
+void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 {
 
     // BUILD ROADS
-    for (vector<road> Rs : road r)
+    for (auto r : Rs)
     {
         // attrb
         sf::RectangleShape R;

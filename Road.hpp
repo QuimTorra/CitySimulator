@@ -5,6 +5,13 @@
 #include <cmath>
 #include <utility>
 
+struct infoRoad
+{
+    std::pair<int, int> pos;
+    float lenght;
+    float angle;
+};
+
 class Road
 {
     std::string name;

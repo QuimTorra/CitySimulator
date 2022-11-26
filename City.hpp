@@ -3,20 +3,15 @@
 
 #include "Node.hpp"
 #include "Road.hpp"
-
-struct infoRoad
-{
-    pair<int, int> pos;
-    float lenght;
-    float angle;
-};
+#include <utility>
+#include <vector>
 
 class City
 {
     std::string name;
     std::vector<Node> nodes;
     std::vector<Road> roads;
-    std::vector<int> rendering_info;
+    std::vector<infoRoad> rendering_info;
 
 public:
     City();
@@ -24,7 +19,7 @@ public:
 
     std::vector<Node> get_nodes();
     std::vector<infoRoad> get_roads();
-    std::vector<int> get_rendering_info();
+    std::vector<infoRoad> get_rendering_info();
 
     Node add_node(std::string name, int x, int y);
     void add_node(Node n);
