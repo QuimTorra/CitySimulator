@@ -67,6 +67,12 @@ std::vector<Node> City::get_nodes()
     return this->nodes;
 }
 
+Node City::get_randomNode()
+{
+    int idNode = (std::rand() % ((this->nodes.size() - 1) - 0 + 1));
+    return this->nodes[idNode];
+}
+
 std::vector<infoRoad> City::get_roads()
 {
     int size = roads.size();
