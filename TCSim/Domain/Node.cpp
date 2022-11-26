@@ -45,4 +45,5 @@ infoNode Node::get_info()
     infoNode result;
     result.pos = this->pos;
     result.angle = this->connections[0].second.get_angle();
+    return result;
 }

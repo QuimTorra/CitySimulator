@@ -49,6 +49,7 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs, const std::vector
     {
         sf::CircleShape N;
         N.setRadius(12.f);
+        N.setFillColor(sf::Color{112, 112, 112, 255});
         N.setOrigin(sf::Vector2f(12.f, 12.f));
         N.setPosition(Ns[i].pos.first, Ns[i].pos.second);
         this->Nodes[i] = N;
