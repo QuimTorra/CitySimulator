@@ -7,13 +7,13 @@ using namespace std;
 
 int main()
 {
-    Node n1 = Node("n1");
-    Node n2 = Node("n2");
-    Node n3 = Node("n3");
+    Node n1 = Node("n1", 0, 0);
+    Node n2 = Node("n2", 0, 1);
+    Node n3 = Node("n3", 1, 0);
 
-    Road r12 = Road("r12", 1, 1);
-    Road r23 = Road("r23", 1, 1);
-    Road r31 = Road("r31", 1, 1);
+    Road r12 = Road("r12", 1);
+    Road r23 = Road("r23", 1);
+    Road r31 = Road("r31", 1);
 
     n1.add_connection(&n2, r12);
     n2.add_connection(&n3, r23);

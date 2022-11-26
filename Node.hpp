@@ -10,6 +10,7 @@
 class Node
 {
     std::string name;
+    std::pair<int, int> pos;
     std::vector<Node *> connections;
     std::map<std::string, Road> roads;
 
@@ -21,9 +22,10 @@ public:
      *
      * @param name string representing the node
      */
-    Node(std::string name);
+    Node(std::string name, int x, int y);
 
     std::string get_name();
+    std::pair<int, int> get_pos();
     std::vector<Node *> get_connections();
     std::map<std::string, Road> get_roads();
 
