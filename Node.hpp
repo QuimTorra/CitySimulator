@@ -11,11 +11,11 @@ class Node
 {
     std::string name;
     std::pair<int, int> pos;
-    std::vector<Node *> connections;
-    std::map<std::string, Road> *roads = new std::map<std::string, Road>();
+    std::vector<std::pair<Node *, Road>> connections;
 
 public:
     Node();
+    ~Node() {}
 
     /**
      * @brief Construct a new Node object
@@ -26,8 +26,9 @@ public:
 
     std::string get_name();
     std::pair<int, int> get_pos();
-    std::vector<Node *> get_connections();
-    std::map<std::string, Road> get_roads();
+    std::vector<std::pair<Node *, Road>> get_connections();
+
+    std::pair<Node *, Road> get_random_connection();
 
     void add_connection(Node &n, Road r);
     // bool remove_connection(Node n);

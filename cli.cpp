@@ -11,12 +11,76 @@ int main()
 
     Lector l1 = Lector("csv_prova.csv");
 
+    if(l1.llegir()) 
+    {
+    cout<<"Sha llegit el document correctament. El seu contingut es: "<<endl;
+    bool first;
+    std::vector<std::vector<std::string>> c = l1.getContent();
+    for (int i = 0; i < c.size(); i++) {
+        first = true;
+        for (int j = 0; j < c[i].size(); j++) {
+            if(first){
+                cout<<c[i][j];
+                first = false;
+                if(c[i][j] == "node") 
+                {
+                    Node n = Node(c[i][j+1],stoi(c[i][j+2]),stoi(c[i][j+3]));
+                    prats.add_node(n);
+                }
+                else if(c[i][j] == "road") 
+                {
+                    Node n1 = prats.get_node(c[i][j+3]);
+                    Node n2 = prats.get_node(c[i][j+4]);
+                    prats.add_road(c[i][j+1],n1,n2,stoi(c[i][j+2]));
+                }
+            }
+            else{
+                cout<<" "<<c[i][j];
+                if(c[i][j] == "node") 
+                {
+                    Node n = Node(c[i][j+1],stoi(c[i][j+2]),stoi(c[i][j+3]));
+                    prats.add_node(n);
+                }
+                else if(c[i][j] == "road") 
+                {
+                    Node n1 = prats.get_node(c[i][j+3]);
+                    Node n2 = prats.get_node(c[i][j+4]);
+                    prats.add_road(c[i][j+1],n1,n2,stoi(c[i][j+2]));
+                }
+            }
+        }
+        cout<<endl;
+        }
+    }
+    else cout<<"El document no sha llegit correctament"<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
     Node n1 = prats.add_node("n1", 0, 0);
     Node n2 = prats.add_node("n2", 0, 1);
-
-    Node n3 = Node("n3", 1, 1);
-    prats.add_node(n3);
-
+    Node n3 = prats.add_node("n3", 1, 0);
+    Node n4 = prats.add_node("n4", 1, 1);
     prats.add_road("r12", n1, n2, 10);
     prats.add_road("r21", n2, n3, 10);
     prats.add_road("r31", n3, n1, 10);
@@ -57,28 +121,9 @@ int main()
     cout<<"El tcotxes del crosswalk amb semafor es: "<<tc2<<endl;
     cout<<"El tvianants del crosswalk amb semafor es: "<<tv2<<endl;*/
 
-    if(l1.llegir()) 
-    {
-    cout<<"Sha llegit el document correctament. El seu contingut es: "<<endl;
-    bool first;
-    std::vector<std::vector<std::string>> c = l1.getContent();
-    for (int i = 0; i < c.size(); i++) {
-        first = true;
-        for (int j = 0; j < c[i].size(); j++) {
-        if(first){
-            cout<<c[i][j];
-            first = false;
+    
 
-        }
-        else{
-            cout<<" "<<c[i][j];
-
-        }
-    }
-    cout<<endl;
-}
-    }
-    else cout<<"El document no sha llegit correctament"<<endl;
+    
     return 0;
 
 }

@@ -1,5 +1,7 @@
 #include "City.hpp"
 
+using namespace std;
+
 City::City()
 {
     this->name = "undefined";
@@ -27,6 +29,21 @@ std::vector<infoRoad> City::get_roads()
     return result;
 }
 
+Node City::get_node(std::string nomNode)
+{
+    std::vector<Node> n = get_nodes();
+    for(int i = 0; i < n.size(); ++i){
+        if(n[i].get_name() == nomNode) return nodes[i];
+    }
+    cout<<"No sha trobat el node "<<nomNode<<endl;
+    return Node();
+}
+
+std::string City::get_nom()
+{
+    return this->name;
+}
+
 std::vector<infoRoad> City::get_rendering_info()
 {
     return this->rendering_info;
@@ -46,7 +63,7 @@ void City::add_node(Node n)
 
 void City::add_road(std::string name, Node &origin, Node &end, int max_speed)
 {
-    Road r = Road(name, max_speed);
+    Road r = Road(name, max_speed, origin.get_pos(), end.get_pos());
     origin.add_connection(end, r);
     this->roads.push_back(r);
     this->rendering_info.push_back(r.get_info());

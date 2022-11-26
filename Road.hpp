@@ -21,7 +21,8 @@ class Road
 
 public:
     Road();
-    Road(std::string name, int max_speed);
+    Road(std::string name, int max_speed, std::pair<int, int> origin, std::pair<int, int> end);
+    ~Road() {}
 
     std::string get_name();
     float get_length();

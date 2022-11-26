@@ -1,21 +1,45 @@
+#ifndef CL_BUTTON
+#define CL_BUTTON
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
-class Button {
+enum button_states
+{
+    BTN_IDLE = 0,
+    BTN_HOVER,
+    BTN_ACTIVE
+};
+
+class Button
+{
 private:
+    short unsigned buttonState;
+
     sf::RectangleShape shape;
     sf::Text text;
-    const sf::Color& idle = sf::Color{118, 118, 118, 255};
-    const sf::Color& hover = sf::Color{138, 138, 138, 255};
-    const sf::Color& active = sf::Color{158, 158, 158, 255};
+    sf::Font font;
+
+    sf::Color idle;
+    sf::Color hover;
+    sf::Color active;
 
 public:
-    Button(const pair<Int,Int>& size, const pair<Int,Int>& pos);
+    Button();
     ~Button();
 
-    void setText(const String& Text, const Integer& fontSize);
+    void init(float x, float y, float width, float height, std::string text);
 
-    void draw(sf::RenderWindow window);
+    // Accessors
+    const bool isPressed() const;
 
-}
+    // Functions
+    void update(const sf::Vector2<int> mousePos);
+
+    void setText(const std::string &Text, const int &fontSize);
+
+    void draw(sf::RenderWindow *window);
+};
+
+#endif

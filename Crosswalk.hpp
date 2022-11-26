@@ -15,6 +15,7 @@ class Crosswalk : public Node
 
 public:
     Crosswalk();
+    ~Crosswalk() {}
 
     Crosswalk(std::string name, int t_cotxes, int t_vianants, int x, int y);
 
@@ -24,7 +25,7 @@ public:
 
     int get_t_vianants();
 
-    //std::string get_name();
+    // std::string get_name();
 };
 
 #endif

@@ -6,19 +6,21 @@ visualizerCity::~visualizerCity(){};
 
 void visualizerCity::initCity(const std::vector<infoRoad> &Rs)
 {
-
+    int size = Rs.size();
+    this->Roads = std::vector<sf::RectangleShape>(size);
     // BUILD ROADS
-    for (auto r : Rs)
+    for (int i = 0; i < size; ++i)
     {
         // attrb
         sf::RectangleShape R;
-        R.setSize(sf::Vector2(20.f, r.length));
+        R.setSize(sf::Vector2(24.f, Rs[i].length));
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos
-        R.setOrigin(sf::Vector2f(10.f, r.lenght / 2.f));
-        R.setPosition(r.pos.first, r.pos.second);
-        R.rotate(r.angle);
+        R.setOrigin(sf::Vector2f(12.f, Rs[i].length / 2.f));
+        R.setPosition(Rs[i].pos.first, Rs[i].pos.second);
+        R.rotate(Rs[i].angle);
+        this->Roads[i] = R;
     }
 
     // BUILD CROSSWALKS

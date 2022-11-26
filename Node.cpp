@@ -21,20 +21,21 @@ std::pair<int, int> Node::get_pos()
     return this->pos;
 }
 
-std::vector<Node *> Node::get_connections()
+std::vector<std::pair<Node *, Road>> Node::get_connections()
 {
     return this->connections;
 }
 
-std::map<std::string, Road> Node::get_roads()
+std::pair<Node *, Road> Node::get_random_connection()
 {
-    return *(this->roads);
+    int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
+    std::cout << id << " : " << this->connections.size() << std::endl;
+    return this->connections[id];
 }
 
 void Node::add_connection(Node &n, Road r)
 {
-    this->connections.push_back(&n);
-    this->roads->insert(std::pair<std::string, Road>(n.get_name(), r));
+    this->connections.push_back(std::pair<Node *, Road>(&n, r));
     r.set_start_pos(this->pos);
     r.set_end_pos(n.get_pos());
 }

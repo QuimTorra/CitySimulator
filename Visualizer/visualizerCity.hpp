@@ -6,12 +6,14 @@
 #include <utility>
 #include <vector>
 #include "../City.hpp"
+#include "Button.hpp"
 
 class visualizerCity
 {
 private:
     // var
     std::vector<sf::RectangleShape> Roads;
+    Button doSomething;
 
 public:
     visualizerCity();

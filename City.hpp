@@ -18,10 +18,13 @@ class City
 public:
     City();
     City(std::string name);
+    ~City() {}
 
     std::vector<Node> get_nodes();
+    Node get_node(std::string nomNode);
     std::vector<infoRoad> get_roads();
     std::vector<infoRoad> get_rendering_info();
+    std::string get_nom();
 
     Node add_node(std::string name, int x, int y);
     void add_node(Node n);
