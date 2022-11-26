@@ -7,7 +7,7 @@
 
 #include "visualizerCity.hpp"
 #include "../City.hpp"
-
+#include "Button.hpp"
 
 //Simulation Engine
 
@@ -19,6 +19,8 @@ private:
     sf::VideoMode videoMode;
     sf::Event ev;
 
+    Button* start;
+
     visualizerCity cityAux;
     City city;
 
@@ -29,6 +31,7 @@ private:
     void initVariables();
     void initWindow();
     void initObjects();
+    void inibtn();
     
 public:
         Simulation();
