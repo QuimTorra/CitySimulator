@@ -26,9 +26,15 @@ std::vector<Node *> Node::get_connections()
     return this->connections;
 }
 
-std::map<std::string, Road> Node::get_roads()
+Node *Node::get_random_connection()
 {
-    return *(this->roads);
+    int id = (std::rand() % (this->connections.size() - 0 + 1));
+    return this->connections[id];
+}
+
+Road Node::get_road(std::string node_name)
+{
+    return this->roads->at(node_name);
 }
 
 void Node::add_connection(Node &n, Road r)

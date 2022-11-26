@@ -27,7 +27,10 @@ public:
     std::string get_name();
     std::pair<int, int> get_pos();
     std::vector<Node *> get_connections();
-    std::map<std::string, Road> get_roads();
+
+    Node *get_random_connection();
+
+    Road get_road(std::string node_name);
 
     void add_connection(Node &n, Road r);
     // bool remove_connection(Node n);
