@@ -29,7 +29,7 @@ std::vector<std::pair<Node *, Road>> Node::get_connections()
 std::pair<Node *, Road> Node::get_random_connection()
 {
     int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
-    std::cout << id << " : " << this->connections.size() << std::endl;
+    std::cout << "NODE " << id << ":" << this->connections[id].first->name << std::endl;
     return this->connections[id];
 }
 

@@ -9,7 +9,7 @@ class Agent
     int state; // 0 in node, 1 traversing
 
     Node current_pos;
-    //Node destiny;
+    // Node destiny;
 
     int nodes_left;
 
@@ -21,7 +21,7 @@ class Agent
 
 public:
     Agent();
-    Agent(Node starting_pos,/*  Node destiny, */ int speed);
+    Agent(Node starting_pos, /*  Node destiny, */ int speed);
     ~Agent() {}
 
     int get_state();
