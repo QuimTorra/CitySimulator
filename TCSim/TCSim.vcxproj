@@ -70,6 +70,8 @@
     <None Include="Data\csv_prova1.csv" />
     <None Include="Data\csv_prova2.csv" />
     <None Include="Data\csv_prova3.csv" />
+    <None Include="Data\csv_provaBARNA.csv" />
+    <None Include="Data\csv_provaLONDRES.csv" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

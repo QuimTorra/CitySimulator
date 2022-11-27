@@ -8,6 +8,7 @@ private:
     sf::RectangleShape shape;
     sf::Text text;
     sf::Font font;
+    sf::Sprite image;
 
 public:
     Menu();
