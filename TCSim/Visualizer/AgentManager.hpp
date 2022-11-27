@@ -15,6 +15,8 @@ public:
     AgentManager(City &city);
     ~AgentManager();
 
+    int get_num_cars();
+
     void newCar(Node &start, const int &speed);
 
     void deleteCar();

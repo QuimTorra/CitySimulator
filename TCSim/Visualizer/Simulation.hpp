@@ -17,12 +17,17 @@
 class Simulation
 {
 private:
+    bool sim_running;
     // var
     sf::RenderWindow *window;
     sf::VideoMode videoMode;
     sf::Event ev;
 
     Menu menu;
+
+    Button start;
+    Button stop;
+    Button reset;
     Button addCar;
     Button removeCar;
     Button Quit;
@@ -35,7 +40,6 @@ private:
     void initVariables();
     void initWindow();
     void initObjects();
-    void inibtn();
 
 public:
     Simulation();
@@ -47,4 +51,8 @@ public:
     void pollEvents();
     void update();
     void render();
+
+    void sim_start();
+    void sim_stop();
+    void sim_reset();
 };

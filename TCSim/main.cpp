@@ -1,17 +1,17 @@
 #include "Visualizer/Simulation.hpp"
 
-int main()
+int main(int argc, char *argv[])
 {
-    // Init Simulation
-    Simulation simulation = Simulation("./Data/csv_prova3.csv");
+    std::string path = "./Data/csv_prova1.csv";
+    if (argc > 1) {
+        path = argv[2];
+    }
 
-    // Game Loop
+    Simulation simulation = Simulation(path);
+
     while (simulation.running())
     {
-
-        // Update
         simulation.update();
-
         simulation.render();
     }
 

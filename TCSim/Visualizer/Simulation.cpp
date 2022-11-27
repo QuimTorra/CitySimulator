@@ -23,14 +23,18 @@ void Simulation::initObjects()
     std::vector<infoNode> aux2 = this->city.get_info_nodes();
 
     this->cityAux.initCity(aux, aux2);
-    this->addCar.init(890.f, 80.f, 140.f, 35.f, "Add 1 Car");
-    this->removeCar.init(890.f, 135.f, 140.f, 35.f, "Remove 1 Car");
-    this->Quit.init(890.f, 190.f, 70.f, 35.f, "Quit");
+    this->start.init(830.f, 70.f, 70.f, 35.f, "Start");
+    this->stop.init(920.f, 70.f, 70.f, 35.f, "Stop");
+    this->reset.init(1010.f, 70.f, 70.f, 35.f, "Reset");
+    this->addCar.init(855.f, 135.f, 120.f, 35.f, "Add Car");
+    this->removeCar.init(985.f, 135.f, 120.f, 35.f, "Remove Car");
+    //this->Quit.init(890.f, 290.f, 70.f, 35.f, "Quit");
     this->menu.init();
 }
 
 Simulation::Simulation()
 {
+    this->sim_running = false;
     this->city = City();
     this->agents = AgentManager(city);
     this->initVariables();
@@ -40,6 +44,7 @@ Simulation::Simulation()
 
 Simulation::Simulation(std::string filename)
 {
+    this->sim_running = false;
     this->window = nullptr;
 
     this->city = City(filename);
@@ -73,6 +78,9 @@ void Simulation::pollEvents()
             break;
         case sf::Event::MouseButtonPressed:
         case sf::Event::MouseMoved:
+            this->start.update(sf::Mouse::getPosition(*this->window));
+            this->stop.update(sf::Mouse::getPosition(*this->window));
+            this->reset.update(sf::Mouse::getPosition(*this->window));
             this->addCar.update(sf::Mouse::getPosition(*this->window));
             this->removeCar.update(sf::Mouse::getPosition(*this->window));
             this->Quit.update(sf::Mouse::getPosition(*this->window));
@@ -81,7 +89,7 @@ void Simulation::pollEvents()
         case sf::Event::MouseButtonReleased:
             if (this->addCar.isPressed())
             {
-                Node *n = this->city.get_randomNode();
+                Node* n = this->city.get_randomNode();
                 this->agents.newCar(*n, 5);
             }
 
@@ -93,6 +101,9 @@ void Simulation::pollEvents()
                 // this->city.printAll();
                 this->window->close();
             }
+            else if (this->start.isPressed()) this->sim_start();
+            else if (this->stop.isPressed()) this->sim_stop();
+            else if (this->reset.isPressed()) this->sim_reset();
             break;
         }
     }
@@ -105,7 +116,8 @@ void Simulation::update()
     // std::cout << "Mouse pos: " << sf::Mouse::getPosition(*this->window).x << " ";
     // std::cout << sf::Mouse::getPosition(*this->window).y << "\n";
     this->pollEvents();
-    this->agents.update();
+
+    if (this->sim_running) this->agents.update();
 }
 
 void Simulation::render()
@@ -119,6 +131,9 @@ void Simulation::render()
 
     // draw U.I
     this->menu.draw(window);
+    this->start.draw(window);
+    this->stop.draw(window);
+    this->reset.draw(window);
     this->addCar.draw(window);
     this->removeCar.draw(window);
     this->Quit.draw(window);
@@ -130,4 +145,19 @@ void Simulation::render()
     this->window->display();
     sf::Clock clock;
     // while (clock.getElapsedTime() <= sf::seconds(1.f)) {};
+}
+
+void Simulation::sim_start() {
+    this->sim_running = true;
+}
+
+void Simulation::sim_stop() {
+    this->sim_running = false;
+}
+
+void Simulation::sim_reset() {
+    this->sim_running = false;
+    while (this->agents.get_num_cars() > 0) {
+        this->agents.deleteCar();
+    }
 }

@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "AgentManager.hpp"
 #include "../Domain/Agent.hpp"
 
@@ -9,6 +10,10 @@ AgentManager::AgentManager(City &city)
 };
 
 AgentManager::~AgentManager(){};
+
+int AgentManager::get_num_cars() {
+    return this->cars.size();
+}
 
 void AgentManager::newCar(Node &start, const int &speed)
 {
