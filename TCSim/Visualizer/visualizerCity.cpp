@@ -14,11 +14,11 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs, const std::vector
     {
         // attrb
         sf::RectangleShape R;
-        R.setSize(sf::Vector2<float>(24.f, Rs[i].length));
+        R.setSize(sf::Vector2<float>(30.f, Rs[i].length));
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos
-        R.setOrigin(sf::Vector2f(12.f, Rs[i].length / 2.f));
+        R.setOrigin(sf::Vector2f(15.f, Rs[i].length / 2.f));
         R.setPosition(Rs[i].pos.first, Rs[i].pos.second);
         R.rotate(Rs[i].angle);
         // R.setTexture(&this->texture);
@@ -48,9 +48,9 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs, const std::vector
     for (int i = 0; i < size; ++i)
     {
         sf::CircleShape N;
-        N.setRadius(12.f);
+        N.setRadius(15.f);
         N.setFillColor(sf::Color{112, 112, 112, 255});
-        N.setOrigin(sf::Vector2f(12.f, 12.f));
+        N.setOrigin(sf::Vector2f(15.f, 15.f));
         N.setPosition(Ns[i].pos.first, Ns[i].pos.second);
         this->Nodes[i] = N;
     }

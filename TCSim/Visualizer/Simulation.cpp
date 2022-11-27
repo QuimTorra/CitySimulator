@@ -82,7 +82,7 @@ void Simulation::pollEvents()
             if (this->addCar.isPressed())
             {
                 Node *n = this->city.get_randomNode();
-                this->agents.newCar(*n, 20);
+                this->agents.newCar(*n, 5);
             }
 
             else if (this->removeCar.isPressed())
