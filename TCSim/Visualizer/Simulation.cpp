@@ -18,7 +18,15 @@ void Simulation::initObjects()
 {
 
     // load road objects for drawing
-    this->cityAux.initCity(city.get_roads(), city.get_info_nodes());
+
+    std::vector<infoRoad> aux = this->city.get_roads();
+    std::cout << "readed roads" << std::endl;
+
+    std::vector<infoNode> aux2 = this->city.get_info_nodes();
+    std::cout << "readed nodes" << std::endl;
+
+    this->cityAux.initCity(aux, aux2);
+    std::cout << "city init" << std::endl;
     this->addCar.init(840.f, 80.f, 140.f, 35.f, "Add 1 Car");
     this->removeCar.init(840.f, 135.f, 140.f, 35.f, "Remove 1 Car");
     this->Quit.init(840.f, 190.f, 70.f, 35.f, "Quit");
@@ -38,7 +46,17 @@ Simulation::Simulation(std::string filename)
 
     this->city = City(filename);
     this->initWindow();
+
+    /////////////////TEST
+    std::cout << "STARTING TEST FULL" << std::endl;
+
+    std::vector<infoRoad> aux = this->city.get_roads();
+
+    //////////////////////////
+
+    std::cout << "finished uploading" << std::endl;
     this->initObjects();
+    std::cout << "finished init" << std::endl;
 }
 
 Simulation::~Simulation()

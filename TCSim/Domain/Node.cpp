@@ -44,6 +44,8 @@ infoNode Node::get_info()
 {
     infoNode result;
     result.pos = this->pos;
+    if (&this->connections[0] == 0)
+        std::cout << "ERROR: DEAD-END!" << std::endl;
     result.angle = this->connections[0].second.get_angle();
     return result;
 }

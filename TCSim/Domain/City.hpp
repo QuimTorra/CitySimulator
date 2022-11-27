@@ -10,7 +10,6 @@
 
 class City
 {
-    std::string name;
     std::vector<Node> nodes;
     std::vector<Road> roads;
     std::vector<infoRoad> rendering_info;
@@ -27,7 +26,6 @@ public:
     std::vector<infoRoad> get_roads();
     std::vector<infoNode> get_info_nodes();
     std::vector<infoRoad> get_rendering_info();
-    std::string get_nom();
 
     Node add_node(std::string name, int x, int y);
     void add_node(Node n);

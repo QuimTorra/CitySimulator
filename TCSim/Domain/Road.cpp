@@ -71,6 +71,11 @@ infoRoad Road::get_info()
     return infoObject;
 };
 
+std::string Road::get_name()
+{
+    return this->name;
+}
+
 int Road::get_max_speed()
 {
     return this->max_speed;

@@ -48,7 +48,7 @@ void AgentManager::update()
         float radians = 3.1415926536 / 180 * angle;
         float x = float(speed) * sin(radians);
         float y = float(speed) * -cos(radians);
-        carShape.move(x, y);
+        carShape.move(-x, -y);
         carShape.setRotation(angle);
     }
 };

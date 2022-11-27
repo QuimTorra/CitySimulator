@@ -1,4 +1,5 @@
 #include "Agent.hpp"
+#include <assert.h>
 
 Agent::Agent() {}
 
@@ -66,14 +67,9 @@ void Agent::tick()
 
         this->current_pos = this->next;
         std::pair<Node *, Road> conn = this->current_pos.get_random_connection();
-        std::cout << "11" << std::endl;
-        std::cout << conn.first->get_pos().first << std::endl;
         this->next = *conn.first;
-        std::cout << "22" << std::endl;
         this->draw_pos = std::pair<int, int>(this->next.get_pos());
-        std::cout << "before" << std::endl;
         this->act_road = conn.second;
-        std::cout << "after" << std::endl;
         this->ticks_left = conn.second.get_length();
 
         this->state = 1;
