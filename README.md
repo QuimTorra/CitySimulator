@@ -38,11 +38,16 @@ This are the names of all 4 of the developers:
 - Angel Prat Vilà
 - Jorge Borrás i Duarte
 
-# Building
+## Building
 
-Execute the command
+### Linux
 
-```c++
-g++ -o CitySim cli.cpp Node.cpp Road.cpp
-.\CitySim.exe
+Build the project to try it on your computer by executing the following commands
+```shell
+cd TCSim
+./make.sh
 ```
+
+And run it with `./TCSim [file].csv`. 
+
+There's a few city examples in the `./Examples` folder.

@@ -3,6 +3,9 @@
 int main(int argc, char *argv[])
 {
     std::string path = "./Data/csv_provaLONDRES.csv";
+    if (argc > 1) {
+        path = argv[1];
+    }
 
     Simulation simulation = Simulation(path);
 
