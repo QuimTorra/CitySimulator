@@ -88,8 +88,11 @@ void Simulation::pollEvents()
             this->addCar.update(sf::Mouse::getPosition(*this->window));
             this->removeCar.update(sf::Mouse::getPosition(*this->window));
             this->Quit.update(sf::Mouse::getPosition(*this->window));
-            if (this->addCar.isPressed())
-                this->agents.newCar(this->city.get_randomNode(), 20);
+            if (this->addCar.isPressed()) {
+                Node *n = this->city.get_randomNode();
+                this->agents.newCar(*n, 20);
+            }
+                
 
             else if (this->removeCar.isPressed())
                 this->agents.deleteCar();

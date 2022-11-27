@@ -13,7 +13,7 @@ public:
     AgentManager();
     ~AgentManager();
 
-    void newCar(Node start, const int &speed);
+    void newCar(Node &start, const int &speed);
 
     void deleteCar();
 
