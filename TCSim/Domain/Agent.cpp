@@ -10,7 +10,7 @@ Agent::Agent(Node &starting_pos, int speed, City *city)
 
     this->act_road = starting_pos.get_connections()[0].second;
     /* this->destiny = destiny; */
-    this->speed = speed;
+    this->speed = speed + (rand() % 7) - 3;
 }
 int Agent::get_state()
 {

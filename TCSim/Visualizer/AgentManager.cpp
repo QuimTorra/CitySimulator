@@ -46,13 +46,18 @@ float AgentManager::try_move(const int i, sf::Vector2f pos, float movedDistance)
     {
         if (i != j)
         {
+            std::cout << "comparing :" << i << " " << j << std::endl;
             sf::Vector2f pos2 = it->second.first.getPosition();
-            float m1 = (pos.x - pos2.x);
-            float m2 = (pos.x - pos2.y);
 
+            // trace area
+            float m1 = (pos.x - pos2.x);
+            float m2 = (pos.y - pos2.y);
             float length(sqrt(m1 * m1 + m2 * m2));
-            if (length - 50.f < distance)
-                distance = length - 50.f;
+
+            // trace direction
+            float angle = 90.f + atan2(m2, m2) * (180.f * M_1_PI);
+            if (length - 45.f < distance)
+                distance = length - 45.f;
         }
         it++;
         j++;
@@ -65,6 +70,7 @@ float AgentManager::try_move(const int i, sf::Vector2f pos, float movedDistance)
 
 void AgentManager::update()
 {
+    std::cout << "UPDATE" << std::endl;
     int size = cars.size();
     std::unordered_map<int, std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
     for (int i = 0; i < size; ++i)
