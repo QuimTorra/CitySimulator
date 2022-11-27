@@ -14,7 +14,7 @@ void visualizerCity::initCity(const std::vector<infoRoad> &Rs, const std::vector
     {
         // attrb
         sf::RectangleShape R;
-        R.setSize(sf::Vector2(24.f, Rs[i].length));
+        R.setSize(sf::Vector2<float>(24.f, Rs[i].length));
         R.setFillColor(sf::Color{112, 112, 112, 255});
 
         // pos

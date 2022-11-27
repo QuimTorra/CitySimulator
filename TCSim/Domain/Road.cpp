@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+
 #include "Road.hpp"
 #include <math.h>
 #include <iostream>
