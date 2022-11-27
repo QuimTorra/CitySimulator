@@ -4,6 +4,7 @@
 #include "Node.hpp"
 #include "City.hpp"
 #include "Road.hpp"
+#include <algorithm>
 
 class Agent
 {
@@ -13,8 +14,7 @@ class Agent
     // Node destiny;
 
     int speed;
-    int movility;
-    int ticks_left;
+    int distance_left;
     City *city;
     Road act_road;
     Node *next;
@@ -30,8 +30,8 @@ public:
     Node *get_current_node();
     Node *get_next_node();
 
-    int get_speed();
-    int get_ticks_left();
+    float get_movingDistance();
+
     std::pair<int, int> get_draw_pos();
     float get_angle();
     void set_speed(int speed);
