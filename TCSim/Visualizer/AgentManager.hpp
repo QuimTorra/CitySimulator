@@ -21,7 +21,7 @@ public:
 
     void deleteCar();
 
-    float try_move(const int i, sf::Vector2f pos, float movedDistance);
+    //float try_move(const int i, sf::Vector2f pos, float movedDistance);
 
     void update();
 

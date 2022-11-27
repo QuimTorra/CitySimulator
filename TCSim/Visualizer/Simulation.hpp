@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>Bold
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 

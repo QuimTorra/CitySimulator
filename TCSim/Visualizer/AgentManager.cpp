@@ -42,6 +42,7 @@ void AgentManager::deleteCar()
         cars.erase(cars.size() - 1);
 };
 
+/*
 float AgentManager::try_move(const int i, sf::Vector2f pos, float movedDistance)
 {
     float distance = movedDistance;
@@ -71,11 +72,10 @@ float AgentManager::try_move(const int i, sf::Vector2f pos, float movedDistance)
         return 0;
     else
         return distance;
-}
+}*/
 
 void AgentManager::update()
 {
-    std::cout << "UPDATE" << std::endl;
     int size = cars.size();
     std::unordered_map<int, std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
     for (int i = 0; i < size; ++i)
@@ -87,7 +87,7 @@ void AgentManager::update()
         float movedDistance = carAgent.get_movingDistance();
 
         // get best possible movement
-        movedDistance = try_move(i, carShape.getPosition(), movedDistance);
+        //movedDistance = try_move(i, carShape.getPosition(), movedDistance);
         if (movedDistance != 0)
         {
             float angle = carAgent.get_angle();

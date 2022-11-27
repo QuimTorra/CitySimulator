@@ -1,0 +1,14 @@
+node,node1,100,100,,
+node,node2,100,300,,
+node,node3,300,300,,
+node,node4,300,100,,
+,,,,,
+road,road1,node1,node2,50,
+road,road2,node2,node3,75,
+road,road3,node3,node4,90,
+road,road4,node4,node1,90,
+,,,,,
+Crosswalk,cr1,25,25,1,1
+Crosswalk,cr2,sem1,,,
+,,,,,
+Semafor,sem1,2,2,20,20
