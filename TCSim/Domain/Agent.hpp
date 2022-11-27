@@ -37,7 +37,7 @@ public:
     void set_speed(int speed);
 
     std::pair<int, int> move_position(std::pair<int, int> origenPos, float angle);
-    void tick();
+    void tick(float movedDistance);
 
 private:
     void bfs();

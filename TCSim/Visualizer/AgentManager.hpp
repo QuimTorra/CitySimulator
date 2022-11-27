@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-#include <list>
+#include <unordered_map>
 #include "../Domain/Agent.hpp"
 
 class AgentManager
 {
 private:
-    std::list<std::pair<sf::RectangleShape, Agent>> cars;
+    std::unordered_map<int, std::pair<sf::RectangleShape, Agent>> cars;
     City *city;
 
 public:
@@ -20,6 +20,8 @@ public:
     void newCar(Node &start, const int &speed);
 
     void deleteCar();
+
+    float try_move(const int i, sf::Vector2f pos, float movedDistance);
 
     void update();
 
