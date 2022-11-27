@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-    std::string path = "./Data/csv_provaLONDRES.csv";
+    std::string path = "./Data/csv_prova1.csv";
     if (argc > 1) {
         path = argv[1];
     }
