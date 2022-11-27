@@ -6,7 +6,7 @@ AgentManager::~AgentManager(){};
 
 void AgentManager::newCar(Node &start, const int &speed)
 {
-    Agent carAgent(start, speed);
+    Agent carAgent = Agent(start, speed);
     sf::RectangleShape car;
     car.setPosition(sf::Vector2f(start.get_pos().first, start.get_pos().second));
     car.setSize(sf::Vector2f(18.f, 40.f));
@@ -34,21 +34,22 @@ void AgentManager::deleteCar()
 void AgentManager::update()
 {
     int size = cars.size();
-    for (auto agent : cars)
+    std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
+    for (int i = 0; i < size; ++i)
     {
-        Agent *carAgent = &agent.second;
-        sf::RectangleShape *carShape = &agent.first;
+        Agent &carAgent = (*it).second;
 
-        carAgent->tick();
-        float angle = carAgent->get_angle();
-        int speed = carAgent->get_speed();
+        carAgent.tick();
+        float angle = carAgent.get_angle();
+        int speed = carAgent.get_speed();
 
+        sf::RectangleShape &carShape = (*it).first;
 
         float radians = 3.1415926536 / 180 * angle;
         float x = float(speed) * sin(radians);
         float y = float(speed) * -cos(radians);
-        carShape->move(-x, -y);
-        carShape->setRotation(angle);
+        carShape.move(-x, -y);
+        carShape.setRotation(angle);
     }
 };
 
