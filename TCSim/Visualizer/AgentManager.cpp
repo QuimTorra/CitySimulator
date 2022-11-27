@@ -28,44 +28,77 @@ void AgentManager::newCar(Node &start, const int &speed)
     std::pair<sf::RectangleShape, Agent> aux;
     aux.first = car;
     aux.second = carAgent;
-    cars.push_back(aux);
+    this->cars.insert(make_pair(cars.size(), aux));
 };
 
 void AgentManager::deleteCar()
 {
     if (cars.size() > 0)
-        cars.pop_back();
+        cars.erase(cars.size() - 1);
 };
+
+float AgentManager::try_move(const int i, sf::Vector2f pos, float movedDistance)
+{
+    float distance = movedDistance;
+    std::unordered_map<int, std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
+    int j = 0;
+    while (distance > 0 and it != cars.end())
+    {
+        if (i != j)
+        {
+            sf::Vector2f pos2 = it->second.first.getPosition();
+            float m1 = (pos.x - pos2.x);
+            float m2 = (pos.x - pos2.y);
+
+            float length(sqrt(m1 * m1 + m2 * m2));
+            if (length - 50.f < distance)
+                distance = length - 50.f;
+        }
+        it++;
+        j++;
+    }
+    if (distance <= 0)
+        return 0;
+    else
+        return distance;
+}
 
 void AgentManager::update()
 {
-    std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
-    while (it != cars.end())
+    int size = cars.size();
+    std::unordered_map<int, std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
+    for (int i = 0; i < size; ++i)
     {
-        Agent &carAgent = (*it).second;
+        Agent &carAgent = (*it).second.second;
+        sf::RectangleShape &carShape = (*it).second.first;
 
-        carAgent.tick();
-        float angle = carAgent.get_angle();
+        // get min speed
         float movedDistance = carAgent.get_movingDistance();
 
-        sf::RectangleShape &carShape = (*it).first;
+        // get best possible movement
+        movedDistance = try_move(i, carShape.getPosition(), movedDistance);
+        if (movedDistance != 0)
+        {
+            float angle = carAgent.get_angle();
 
-        float radians = M_PI / 180 * angle;
-        float x = movedDistance * sin(radians);
-        float y = movedDistance * -cos(radians);
+            float radians = M_PI / 180 * angle;
+            float x = movedDistance * sin(radians);
+            float y = movedDistance * -cos(radians);
 
-        carShape.move(-x, -y);
-        carShape.setRotation(angle);
+            carShape.move(-x, -y);
+            carShape.setRotation(angle);
+        }
+        carAgent.tick(movedDistance);
         it++;
     }
 };
 
 void AgentManager::draw(sf::RenderWindow *window)
 {
-    std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
+    std::unordered_map<int, std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
     while (it != cars.end())
     {
-        window->draw((*it).first);
+        window->draw((*it).second.first);
         it++;
     }
 }

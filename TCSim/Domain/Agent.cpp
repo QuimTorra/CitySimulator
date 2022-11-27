@@ -29,15 +29,13 @@ Node *Agent::get_next_node()
 
 float Agent::get_movingDistance()
 {
-    if (this->speed <= act_road.get_max_speed())
-        if (distance_left <= 0)
-            return float(this->speed) + distance_left;
-        else
-            return float(this->speed);
-    else if (distance_left <= 0)
-        return float(act_road.get_max_speed()) + distance_left;
-    else
-        return float(act_road.get_max_speed());
+    float lowest_dist = float(speed);
+    if (float(act_road.get_max_speed()) < lowest_dist)
+        lowest_dist = float(act_road.get_max_speed());
+
+    if (distance_left > 0 and distance_left < lowest_dist)
+        return distance_left;
+    return lowest_dist;
 }
 
 std::pair<int, int> Agent::get_draw_pos()
@@ -55,7 +53,7 @@ void Agent::set_speed(int speed)
     this->speed = speed;
 }
 
-void Agent::tick()
+void Agent::tick(float movedDistance)
 {
     if (this->state == 0)
     {
@@ -69,11 +67,7 @@ void Agent::tick()
     }
     if (this->state == 1)
     {
-        if (this->speed <= act_road.get_max_speed())
-            distance_left = distance_left - this->speed;
-        else
-            distance_left = distance_left - act_road.get_max_speed();
-
+        distance_left = distance_left - movedDistance;
         // move position
 
         if (distance_left <= 0)
