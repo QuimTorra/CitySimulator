@@ -27,6 +27,7 @@
     <ClCompile Include="Domain\Road.cpp" />
     <ClCompile Include="Domain\Semafor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Visualizer\AgentManager.cpp" />
     <ClCompile Include="Visualizer\Button.cpp" />
     <ClCompile Include="Visualizer\Menu.cpp" />
     <ClCompile Include="Visualizer\Simulation.cpp">
@@ -45,6 +46,7 @@
     <ClInclude Include="Domain\Node.hpp" />
     <ClInclude Include="Domain\Road.hpp" />
     <ClInclude Include="Domain\Semafor.hpp" />
+    <ClInclude Include="Visualizer\AgentManager.hpp" />
     <ClInclude Include="Visualizer\Button.hpp" />
     <ClInclude Include="Visualizer\Menu.hpp" />
     <ClInclude Include="Visualizer\Simulation.hpp">
@@ -62,6 +64,12 @@
   <ItemGroup>
     <Font Include="Visualizer\Montserrat-Bold.ttf" />
     <Font Include="Visualizer\Montserrat-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\csv_prova.csv" />
+    <None Include="Data\csv_prova1.csv" />
+    <None Include="Data\csv_prova2.csv" />
+    <None Include="Data\csv_prova3.csv" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

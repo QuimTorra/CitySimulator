@@ -51,6 +51,9 @@
     <ClCompile Include="Visualizer\Simulation.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Visualizer\AgentManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Visualizer\Button.hpp">
@@ -86,6 +89,9 @@
     <ClInclude Include="Data\Lector.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Visualizer\AgentManager.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Visualizer\crosswalkTexture.png">
@@ -98,5 +104,11 @@
   <ItemGroup>
     <Font Include="Visualizer\Montserrat-Bold.ttf" />
     <Font Include="Visualizer\Montserrat-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\csv_prova.csv" />
+    <None Include="Data\csv_prova1.csv" />
+    <None Include="Data\csv_prova2.csv" />
+    <None Include="Data\csv_prova3.csv" />
   </ItemGroup>
 </Project>

@@ -32,14 +32,11 @@ void AgentManager::update()
 {
     int size = cars.size();
     std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
-    std::cout << "start loop" << std::endl;
     for (int i = 0; i < size; ++i)
     {
         Agent &carAgent = (*it).second;
-        std::cout << "11111111111111111111" << std::endl;
 
         carAgent.tick();
-        std::cout << "&&&&&&&&&&" << std::endl;
         float angle = carAgent.get_angle();
         int speed = carAgent.get_speed();
 
@@ -55,12 +52,10 @@ void AgentManager::update()
 
 void AgentManager::draw(sf::RenderWindow *window)
 {
-    std::cout << "drawCar" << std::endl;
     int size = cars.size();
     std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
     for (int i = 0; i < size; ++i)
     {
         window->draw((*it).first);
     }
-    std::cout << "enddrawCar" << std::endl;
 }

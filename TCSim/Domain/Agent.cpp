@@ -70,7 +70,7 @@ void Agent::tick()
         this->next = *conn.first;
         this->draw_pos = std::pair<int, int>(this->next.get_pos());
         this->act_road = conn.second;
-        this->ticks_left = conn.second.get_length();
+        this->ticks_left = conn.second.get_length() / this->speed;
 
         this->state = 1;
     }
