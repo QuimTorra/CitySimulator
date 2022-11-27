@@ -36,7 +36,7 @@ public:
     std::pair<int, int> get_pos();
     std::vector<std::pair<Node *, Road>> get_connections();
 
-    std::pair<Node *, Road> get_random_connection();
+    std::pair<Node *, Road> *get_random_connection();
 
     void add_connection(Node &n, Road r);
     // bool remove_connection(Node n);
