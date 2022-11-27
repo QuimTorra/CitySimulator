@@ -46,13 +46,13 @@ void AgentManager::update()
 
         carAgent.tick();
         float angle = carAgent.get_angle();
-        int speed = carAgent.get_speed();
+        float movedDistance = carAgent.get_movingDistance();
 
         sf::RectangleShape &carShape = (*it).first;
 
-        float radians = 3.1415926536 / 180 * angle;
-        float x = float(speed) * sin(radians);
-        float y = float(speed) * -cos(radians);
+        float radians = M_PI / 180 * angle;
+        float x = movedDistance * sin(radians);
+        float y = movedDistance * -cos(radians);
 
         carShape.move(-x, -y);
         carShape.setRotation(angle);

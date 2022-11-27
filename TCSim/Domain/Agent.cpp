@@ -1,5 +1,4 @@
 #include "Agent.hpp"
-#include <assert.h>
 
 Agent::Agent() {}
 
@@ -8,16 +7,11 @@ Agent::Agent(Node &starting_pos, int speed, City *city)
     this->state = 0; // An agent always starts on a node
     this->city = city;
     this->next = &starting_pos;
-    this->current_pos = &starting_pos;
-    this->movility = speed;
 
     this->act_road = starting_pos.get_connections()[0].second;
     /* this->destiny = destiny; */
     this->speed = speed;
-
-    this->draw_pos = std::pair<int, int>(starting_pos.get_pos());
 }
-
 int Agent::get_state()
 {
     return this->state;
@@ -33,14 +27,17 @@ Node *Agent::get_next_node()
     return this->next;
 }
 
-int Agent::get_speed()
+float Agent::get_movingDistance()
 {
-    return this->movility;
-}
-
-int Agent::get_ticks_left()
-{
-    return this->ticks_left;
+    if (this->speed <= act_road.get_max_speed())
+        if (distance_left <= 0)
+            return float(this->speed) + distance_left;
+        else
+            return float(this->speed);
+    else if (distance_left <= 0)
+        return float(act_road.get_max_speed()) + distance_left;
+    else
+        return float(act_road.get_max_speed());
 }
 
 std::pair<int, int> Agent::get_draw_pos()
@@ -66,20 +63,21 @@ void Agent::tick()
         std::pair<std::string, Road> *conn = this->current_pos->get_random_connection();
         this->next = city->get_node((*conn).first);
         this->act_road = (*conn).second;
-        this->ticks_left = (*conn).second.get_length() / this->speed;
-        this->movility = this->speed;
+        this->distance_left = (*conn).second.get_length();
 
         this->state = 1;
     }
-    else if (this->state == 1)
+    if (this->state == 1)
     {
-        this->ticks_left--;
+        if (this->speed <= act_road.get_max_speed())
+            distance_left = distance_left - this->speed;
+        else
+            distance_left = distance_left - act_road.get_max_speed();
 
         // move position
 
-        if (ticks_left <= 0)
+        if (distance_left <= 0)
         {
-            this->movility = int(this->act_road.get_length()) % this->speed;
             this->state = 0;
         }
     }
