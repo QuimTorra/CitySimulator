@@ -39,9 +39,8 @@ void AgentManager::deleteCar()
 
 void AgentManager::update()
 {
-    int size = cars.size();
     std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
-    for (int i = 0; i < size; ++i)
+    while (it != cars.end())
     {
         Agent &carAgent = (*it).second;
 
@@ -57,15 +56,16 @@ void AgentManager::update()
 
         carShape.move(-x, -y);
         carShape.setRotation(angle);
+        it++;
     }
 };
 
 void AgentManager::draw(sf::RenderWindow *window)
 {
-    int size = cars.size();
     std::list<std::pair<sf::RectangleShape, Agent>>::iterator it = cars.begin();
-    for (int i = 0; i < size; ++i)
+    while (it != cars.end())
     {
         window->draw((*it).first);
+        it++;
     }
 }

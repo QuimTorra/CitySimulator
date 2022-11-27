@@ -13,6 +13,7 @@ class Agent
     // Node destiny;
 
     int speed;
+    int movility;
     int ticks_left;
     City *city;
     Road act_road;

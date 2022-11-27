@@ -9,6 +9,7 @@ Agent::Agent(Node &starting_pos, int speed, City *city)
     this->city = city;
     this->next = &starting_pos;
     this->current_pos = &starting_pos;
+    this->movility = speed;
 
     this->act_road = starting_pos.get_connections()[0].second;
     /* this->destiny = destiny; */
@@ -34,7 +35,7 @@ Node *Agent::get_next_node()
 
 int Agent::get_speed()
 {
-    return this->speed;
+    return this->movility;
 }
 
 int Agent::get_ticks_left()
@@ -66,6 +67,7 @@ void Agent::tick()
         this->next = city->get_node((*conn).first);
         this->act_road = (*conn).second;
         this->ticks_left = (*conn).second.get_length() / this->speed;
+        this->movility = this->speed;
 
         this->state = 1;
     }
@@ -77,6 +79,7 @@ void Agent::tick()
 
         if (ticks_left <= 0)
         {
+            this->movility = int(this->act_road.get_length()) % this->speed;
             this->state = 0;
         }
     }

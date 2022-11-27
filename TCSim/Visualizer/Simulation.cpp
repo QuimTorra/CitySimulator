@@ -71,12 +71,14 @@ void Simulation::pollEvents()
             // send close window event
             window->close();
             break;
-        case sf::Event::MouseButtonReleased:
         case sf::Event::MouseButtonPressed:
         case sf::Event::MouseMoved:
             this->addCar.update(sf::Mouse::getPosition(*this->window));
             this->removeCar.update(sf::Mouse::getPosition(*this->window));
             this->Quit.update(sf::Mouse::getPosition(*this->window));
+            break;
+
+        case sf::Event::MouseButtonReleased:
             if (this->addCar.isPressed())
             {
                 Node *n = this->city.get_randomNode();
@@ -88,10 +90,9 @@ void Simulation::pollEvents()
 
             else if (this->Quit.isPressed())
             {
-                this->agents.update();
                 // this->city.printAll();
+                this->window->close();
             }
-            // this->window->close();
             break;
         }
     }
@@ -104,6 +105,7 @@ void Simulation::update()
     // std::cout << "Mouse pos: " << sf::Mouse::getPosition(*this->window).x << " ";
     // std::cout << sf::Mouse::getPosition(*this->window).y << "\n";
     this->pollEvents();
+    this->agents.update();
 }
 
 void Simulation::render()
@@ -126,4 +128,6 @@ void Simulation::render()
     this->agents.draw(window);
 
     this->window->display();
+    sf::Clock clock;
+    // while (clock.getElapsedTime() <= sf::seconds(1.f)) {};
 }
