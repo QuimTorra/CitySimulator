@@ -95,7 +95,8 @@ void Simulation::pollEvents()
                 this->agents.deleteCar();
 
             else if (this->Quit.isPressed())
-                this->window->close();
+                this->agents.update();
+            // this->window->close();
             break;
         }
     }
@@ -108,7 +109,6 @@ void Simulation::update()
     // std::cout << "Mouse pos: " << sf::Mouse::getPosition(*this->window).x << " ";
     // std::cout << sf::Mouse::getPosition(*this->window).y << "\n";
     this->pollEvents();
-    this->agents.update();
 }
 
 void Simulation::render()

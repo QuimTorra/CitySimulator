@@ -3,7 +3,7 @@
 int main()
 {
     // Init Simulation
-    Simulation simulation = Simulation("./Data/csv_prova.csv");
+    Simulation simulation = Simulation("./Data/csv_prova1.csv");
 
     // Game Loop
     while (simulation.running())
