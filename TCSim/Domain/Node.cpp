@@ -1,10 +1,5 @@
 #include "Node.hpp"
 
-Node::Node()
-{
-    this->name = "undefined";
-}
-
 Node::Node(std::string name, int x, int y)
 {
     this->name = name;
@@ -21,23 +16,24 @@ std::pair<int, int> Node::get_pos()
     return this->pos;
 }
 
-std::vector<std::pair<Node *, Road>> Node::get_connections()
+std::vector<std::pair<std::string, Road>> Node::get_connections()
 {
     return this->connections;
 }
 
-std::pair<Node *, Road> *Node::get_random_connection()
+std::pair<std::string, Road> *Node::get_random_connection()
 {
-    //int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
-    std::cout << "NODE " << "0" << ":" << this->connections[0].first->get_pos().first << std::endl;
-    return &this->connections[0];
+    // int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
+    std::cout << "getNext: " << connections[0].first << std::endl;
+    return &connections[0];
 }
 
-void Node::add_connection(Node &n, Road r)
+void Node::add_connection(std::string node, std::pair<int, int> end_pos, Road r)
 {
     r.set_start_pos(this->pos);
-    r.set_end_pos(n.get_pos());
-    this->connections.push_back(std::pair<Node *, Road>(&n, r));
+    r.set_end_pos(end_pos);
+    this->connections.push_back(std::pair<std::string, Road>(node, r));
+    std::cout << "added_connection: " << &this->connections[this->connections.size() - 1] << std::endl;
 }
 
 infoNode Node::get_info()

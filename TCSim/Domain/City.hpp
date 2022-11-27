@@ -30,6 +30,7 @@ public:
     Node add_node(std::string name, int x, int y);
     void add_node(Node n);
     void add_road(std::string name, Node &origin, Node &end, int max_speed);
+    void printAll();
 };
 
 #endif

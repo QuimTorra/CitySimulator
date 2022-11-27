@@ -8,9 +8,11 @@ class AgentManager
 {
 private:
     std::list<std::pair<sf::RectangleShape, Agent>> cars;
+    City *city;
 
 public:
     AgentManager();
+    AgentManager(City &city);
     ~AgentManager();
 
     void newCar(Node &start, const int &speed);

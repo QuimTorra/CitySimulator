@@ -3,12 +3,13 @@
 
 Agent::Agent() {}
 
-Agent::Agent(Node &starting_pos, int speed)
+Agent::Agent(Node &starting_pos, int speed, City *city)
 {
     this->state = 0; // An agent always starts on a node
-
+    this->city = city;
     this->next = &starting_pos;
     this->current_pos = &starting_pos;
+
     this->act_road = starting_pos.get_connections()[0].second;
     /* this->destiny = destiny; */
     this->speed = speed;
@@ -36,7 +37,6 @@ int Agent::get_speed()
     return this->speed;
 }
 
-
 int Agent::get_ticks_left()
 {
     return this->ticks_left;
@@ -62,9 +62,9 @@ void Agent::tick()
     if (this->state == 0)
     {
         this->current_pos = this->next;
-        std::pair<Node*, Road> *conn = this->current_pos->get_random_connection();
-        this->next = conn->first;
-        this->ticks_left = conn->second.get_length() / this->speed;
+        std::pair<std::string, Road> *conn = this->current_pos->get_random_connection();
+        this->next = city->get_node((*conn).first);
+        this->ticks_left = (*conn).second.get_length() / this->speed;
 
         this->state = 1;
     }
@@ -72,7 +72,7 @@ void Agent::tick()
     {
         this->ticks_left--;
 
-        //std::cout << "Current Node: " << this->current_pos.get_name() << " in " << this->ticks_left << std::endl;
+        // std::cout << "Current Node: " << this->current_pos.get_name() << " in " << this->ticks_left << std::endl;
         std::cout << "angle: " << this->get_angle() << std::endl;
 
         // move position

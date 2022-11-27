@@ -2,11 +2,17 @@
 #include "../Domain/Agent.hpp"
 
 AgentManager::AgentManager(){};
+
+AgentManager::AgentManager(City &city)
+{
+    this->city = &city;
+};
+
 AgentManager::~AgentManager(){};
 
 void AgentManager::newCar(Node &start, const int &speed)
 {
-    Agent carAgent = Agent(start, speed);
+    Agent carAgent = Agent(start, speed, city);
     sf::RectangleShape car;
     car.setPosition(sf::Vector2f(start.get_pos().first, start.get_pos().second));
     car.setSize(sf::Vector2f(18.f, 40.f));

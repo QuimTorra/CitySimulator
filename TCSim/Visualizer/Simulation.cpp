@@ -31,6 +31,8 @@ void Simulation::initObjects()
 
 Simulation::Simulation()
 {
+    this->city = City();
+    this->agents = AgentManager(city);
     this->initVariables();
     this->initWindow();
     this->initObjects();
@@ -41,6 +43,7 @@ Simulation::Simulation(std::string filename)
     this->window = nullptr;
 
     this->city = City(filename);
+    this->agents = AgentManager(city);
     this->initWindow();
     this->initObjects();
 }
@@ -84,7 +87,10 @@ void Simulation::pollEvents()
                 this->agents.deleteCar();
 
             else if (this->Quit.isPressed())
+            {
                 this->agents.update();
+                this->city.printAll();
+            }
             // this->window->close();
             break;
         }

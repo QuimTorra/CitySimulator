@@ -66,7 +66,19 @@ std::vector<Node> City::get_nodes()
 Node *City::get_randomNode()
 {
     int idNode = (std::rand() % ((this->nodes.size() - 1) - 0 + 1));
-    return &this->nodes[idNode];
+    return &nodes[idNode];
+}
+
+Node *City::get_node(std::string nomNode)
+{
+    std::vector<Node> n = get_nodes();
+    for (int i = 0; i < n.size(); ++i)
+    {
+        if (n[i].get_name() == nomNode)
+            return &nodes[i];
+    }
+    cout << "No sha trobat el node " << nomNode << endl;
+    return nullptr;
 }
 
 std::vector<infoRoad> City::get_roads()
@@ -92,18 +104,6 @@ std::vector<infoNode> City::get_info_nodes()
     return result;
 }
 
-Node *City::get_node(std::string nomNode)
-{
-    std::vector<Node> n = get_nodes();
-    for (int i = 0; i < n.size(); ++i)
-    {
-        if (n[i].get_name() == nomNode)
-            return &nodes[i];
-    }
-    cout << "No sha trobat el node " << nomNode << endl;
-    return nullptr;
-}
-
 std::vector<infoRoad> City::get_rendering_info()
 {
     return this->rendering_info;
@@ -124,7 +124,17 @@ void City::add_node(Node n)
 void City::add_road(std::string name, Node &origin, Node &end, int max_speed)
 {
     Road r = Road(name, max_speed, origin.get_pos(), end.get_pos());
-    origin.add_connection(end, r);
+    origin.add_connection(end.get_name(), end.get_pos(), r);
     this->roads.push_back(r);
     this->rendering_info.push_back(r.get_info());
+}
+
+void City::printAll()
+{
+    int size = this->nodes.size();
+    for (int i = 0; i < size; ++i)
+    {
+        std::cout << "Node" << i << ": " << nodes[i].get_pos().first << " " << nodes[i].get_pos().second << " " << nodes[i].get_connections().size() << std::endl;
+    }
+    std::cout << " " << std::endl;
 }
