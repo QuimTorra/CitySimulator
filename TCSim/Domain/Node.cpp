@@ -28,9 +28,9 @@ std::vector<std::pair<Node *, Road>> Node::get_connections()
 
 std::pair<Node *, Road> Node::get_random_connection()
 {
-    int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
-    std::cout << "NODE " << id << ":" << this->connections[id].first->name << std::endl;
-    return this->connections[id];
+    //int id = (std::rand() % ((this->connections.size() - 1) - 0 + 1));
+    //std::cout << "NODE " << id << ":" << this->connections[id].first->name << std::endl;
+    return this->connections[0];
 }
 
 void Node::add_connection(Node &n, Road r)

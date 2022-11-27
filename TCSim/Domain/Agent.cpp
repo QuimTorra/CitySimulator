@@ -66,10 +66,11 @@ void Agent::tick()
     {
 
         this->current_pos = this->next;
-        std::pair<Node *, Road> conn = this->current_pos.get_random_connection();
+        std::pair<Node *, Road> conn = this->next.get_random_connection();
         this->next = *conn.first;
         this->draw_pos = std::pair<int, int>(this->next.get_pos());
         this->act_road = conn.second;
+        std::cout << "CHANGE STATE " << this->act_road.get_name() << std::endl;
         this->ticks_left = conn.second.get_length() / this->speed;
 
         this->state = 1;
@@ -78,7 +79,8 @@ void Agent::tick()
     {
         this->ticks_left--;
 
-        float angle = this->act_road.get_angle();
+        //std::cout << "Current Node: " << this->current_pos.get_name() << " in " << this->ticks_left << std::endl;
+        std::cout << "angle: " << this->get_angle() << std::endl;
 
         // move position
 
