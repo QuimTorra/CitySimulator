@@ -8,7 +8,7 @@ void Menu::init()
     this->font.loadFromFile("Montserrat-Bold.ttf");
 
     this->shape.setSize(sf::Vector2f(270.f, 300.f));
-    this->shape.setPosition(750.f, 0.f);
+    this->shape.setPosition(800.f, 0.f);
     this->shape.setOutlineColor(sf::Color{15, 15, 15, 255});
     this->shape.setOutlineThickness(1.f);
     this->shape.setFillColor(sf::Color{138, 138, 138, 255});

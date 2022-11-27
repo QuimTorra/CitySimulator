@@ -8,7 +8,7 @@ void Simulation::initVariables()
 
 void Simulation::initWindow()
 {
-    this->videoMode.height = 480;
+    this->videoMode.height = 680;
     this->videoMode.width = 1080;
     this->window = new sf::RenderWindow(this->videoMode, "City Simulator", sf::Style::Titlebar | sf::Style::Close);
     this->window->setFramerateLimit(60);
@@ -27,9 +27,9 @@ void Simulation::initObjects()
 
     this->cityAux.initCity(aux, aux2);
     std::cout << "city init" << std::endl;
-    this->addCar.init(840.f, 80.f, 140.f, 35.f, "Add 1 Car");
-    this->removeCar.init(840.f, 135.f, 140.f, 35.f, "Remove 1 Car");
-    this->Quit.init(840.f, 190.f, 70.f, 35.f, "Quit");
+    this->addCar.init(890.f, 80.f, 140.f, 35.f, "Add 1 Car");
+    this->removeCar.init(890.f, 135.f, 140.f, 35.f, "Remove 1 Car");
+    this->Quit.init(890.f, 190.f, 70.f, 35.f, "Quit");
     this->menu.init();
 }
 
