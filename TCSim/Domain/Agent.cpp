@@ -64,6 +64,7 @@ void Agent::tick()
         this->current_pos = this->next;
         std::pair<std::string, Road> *conn = this->current_pos->get_random_connection();
         this->next = city->get_node((*conn).first);
+        this->act_road = (*conn).second;
         this->ticks_left = (*conn).second.get_length() / this->speed;
 
         this->state = 1;
@@ -71,9 +72,6 @@ void Agent::tick()
     else if (this->state == 1)
     {
         this->ticks_left--;
-
-        // std::cout << "Current Node: " << this->current_pos.get_name() << " in " << this->ticks_left << std::endl;
-        std::cout << "angle: " << this->get_angle() << std::endl;
 
         // move position
 

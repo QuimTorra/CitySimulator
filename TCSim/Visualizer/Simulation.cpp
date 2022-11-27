@@ -89,7 +89,7 @@ void Simulation::pollEvents()
             else if (this->Quit.isPressed())
             {
                 this->agents.update();
-                this->city.printAll();
+                // this->city.printAll();
             }
             // this->window->close();
             break;
