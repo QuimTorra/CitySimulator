@@ -13,53 +13,64 @@ City::City(std::string filename)
     this->name = filename;
     Lector lec = Lector(filename);
 
-    if(lec.llegir())
+    if (lec.llegir())
     {
-    cout<<"Sha llegit el document correctament. El seu contingut es: "<<endl;
-    bool first;
-    std::vector<std::vector<std::string>> c = lec.getContent();
-    for (int i = 0; i < c.size(); i++) {
-        first = true;
-        for (int j = 0; j < c[i].size(); j++) {
-            if(first){
-                cout<<c[i][j];
-                first = false;
-                if(c[i][j] == "node")
+        cout << "Sha llegit el document correctament. El seu contingut es: " << endl;
+        bool first;
+        std::vector<std::vector<std::string>> c = lec.getContent();
+        for (int i = 0; i < c.size(); i++)
+        {
+            first = true;
+            for (int j = 0; j < c[i].size(); j++)
+            {
+                if (first)
                 {
-                    Node n = Node(c[i][j+1],stoi(c[i][j+2]),stoi(c[i][j+3]));
-                    this->add_node(n);
+                    cout << c[i][j];
+                    first = false;
+                    if (c[i][j] == "node")
+                    {
+                        Node n = Node(c[i][j + 1], stoi(c[i][j + 2]), stoi(c[i][j + 3]));
+                        this->add_node(n);
+                    }
+                    else if (c[i][j] == "road")
+                    {
+                        Node *n1 = this->get_node(c[i][j + 3]);
+                        Node *n2 = this->get_node(c[i][j + 4]);
+                        this->add_road(c[i][j + 1], *n1, *n2, stoi(c[i][j + 2]));
+                    }
                 }
-                else if(c[i][j] == "road")
+                else
                 {
-                    Node *n1 = this->get_node(c[i][j+3]);
-                    Node *n2 = this->get_node(c[i][j+4]);
-                    this->add_road(c[i][j+1],*n1,*n2,stoi(c[i][j+2]));
+                    cout << " " << c[i][j];
+                    if (c[i][j] == "node")
+                    {
+                        Node n = Node(c[i][j + 1], stoi(c[i][j + 2]), stoi(c[i][j + 3]));
+                        this->add_node(n);
+                    }
+                    else if (c[i][j] == "road")
+                    {
+                        Node *n1 = this->get_node(c[i][j + 3]);
+                        Node *n2 = this->get_node(c[i][j + 4]);
+                        this->add_road(c[i][j + 1], *n1, *n2, stoi(c[i][j + 2]));
+                    }
                 }
             }
-            else{
-                cout<<" "<<c[i][j];
-                if(c[i][j] == "node")
-                {
-                    Node n = Node(c[i][j+1],stoi(c[i][j+2]),stoi(c[i][j+3]));
-                    this->add_node(n);
-                }
-                else if(c[i][j] == "road")
-                {
-                    Node *n1 = this->get_node(c[i][j+3]);
-                    Node *n2 = this->get_node(c[i][j+4]);
-                    this->add_road(c[i][j+1],*n1,*n2,stoi(c[i][j+2]));
-                }
-            }
-        }
-        cout<<endl;
+            cout << endl;
         }
     }
-    else cout<<"El document no sha llegit correctament"<<endl;
+    else
+        cout << "El document no sha llegit correctament" << endl;
 }
 
 std::vector<Node> City::get_nodes()
 {
     return this->nodes;
+}
+
+Node City::get_randomNode()
+{
+    int idNode = (std::rand() % ((this->nodes.size() - 1) - 0 + 1));
+    return this->nodes[idNode];
 }
 
 std::vector<infoRoad> City::get_roads()

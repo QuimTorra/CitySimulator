@@ -21,6 +21,8 @@ public:
     ~City() {}
 
     std::vector<Node> get_nodes();
+    Node get_randomNode();
+
     Node *get_node(std::string nomNode);
     std::vector<infoRoad> get_roads();
     std::vector<infoNode> get_info_nodes();

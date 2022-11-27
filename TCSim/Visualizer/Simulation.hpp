@@ -9,6 +9,7 @@
 #include "../Domain/City.hpp"
 #include "Button.hpp"
 #include "Menu.hpp"
+#include "AgentManager.hpp"
 #include <string>
 
 // Simulation Engine
@@ -22,12 +23,12 @@ private:
     sf::Event ev;
 
     Menu menu;
-    Button doSomething;
-    Button doSomething2;
+    Button addCar;
+    Button removeCar;
     Button Quit;
-    sf::RectangleShape car;
 
     visualizerCity cityAux;
+    AgentManager agents;
     City city;
 
     // func
