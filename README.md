@@ -38,13 +38,13 @@ This are the names of all 4 of the developers:
 - Angel Prat Vilà
 - Jorge Borrás i Duarte
 
-## Building
+# Building
 
 You'll need to have installed:
 - g++ v 11.2.0
 - SFML library v 2.5.1
 
-### Linux
+## Linux
 
 Build the project to try it on your computer by executing the following commands
 ```shell
@@ -56,7 +56,7 @@ And run it with `./TCSim [file].csv`.
 
 There's a few city examples in the `./Examples` folder.
 
-### Windows
+## Windows
 
 Open the Visual Studio solution under the directory `./TCSim/`.
 
@@ -66,7 +66,7 @@ Compile and run the solution. Any issues, address them directly to the developer
 
 If you're executing from the IDE, for the moment, the easiest way to try different **csv** files is to hard-code them.
 
-## Examples
+# Examples
 
 **./Examples/csv_provaLONDRES.csv** loaded and running.
 ![img](./images/csv_londres_loaded.png)
